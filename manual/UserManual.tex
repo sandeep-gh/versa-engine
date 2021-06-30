@@ -1,0 +1,116 @@
+\documentclass[10,twocolumn]{article}
+\input{latex_utils/preamble.tex}
+\begin{document}
+
+\title{Dicex-pgsa: Managing Standalone Postgres in Supercomputer\\ 
+User's Manual}
+
+\maketitle
+
+\paragraph{\question{How to obtain Dicex-pgsa?}}\hfill\\
+For development clone the repo \url{https://ndsslgit.vbi.vt.edu/ndssl-software/dicex_pgsa}.
+For use in your projects, login to shadowfax and run
+\begin{lstlisting}[style=mystyle]
+you@sfxlogin1: cd <your-work-directory>
+you@sfxlogin1: . /home/pgxxc/public/dicex.sh
+\end{lstlisting}
+
+\paragraph{\question{How to launch  a job running a database instance?}}\hfill\\
+\begin{lstlisting}[style=mystyle]
+you@sfxlogin1: cd <your-work-directory>
+dicex\_pgsa.sh --launchjob <session-identifier>
+\end{lstlisting}
+where $<$session-identifier$>$ is a tag that defines the current database session.  It is optional. 
+If not provided, the system will assign an idenifier as ``pgsa\_YYYY\_MM\_DD\_HH''. 
+
+This command grabs hold of a compute resource and launches a database engine on a port. 
+The compute node is identified as server\_ip and the port as server\_port. Both of these
+are writted on in the ``dbsession\_$<$session-identifier$>$.py'' file. 
+
+\paragraph{\question{How to remove a job?}}\hfill\\
+\begin{lstlisting}[style=mystyle]
+you@sfxlogin1: cd <your-work-directory>
+dicex\_pgsa.sh --removejob <session-identifier>
+\end{lstlisting}
+
+\paragraph{\question{Other Options}}\hfill\\
+\begin{itemize}
+\topsep=0pt\itemsep=0pt
+\item To run a script after start of the database, use following additional option\hfill\\
+\begin{lstlisting}[style=mystyle]
+--post_dbstart <script_file_full_path>
+\end{lstlisting}
+where $<$postdb\_script$>$ is the path to the script being run.
+\item To run a  script after the shutdown of the database, use following additional command\hfill\\
+\begin{lstlisting}[style=mystyle]
+--post_dbstop <script_file_full_path>
+\end{lstlisting}
+\item To close a database session (so that post\_dbstop script can be called use following command \hfill\\
+\begin{lstlisting}[style=mystyle]
+--closedb <dbdesc>
+\end{lstlisting}
+This will shutdown the database and call post\_dbstop stop.
+\item Save dbsession before closing the dbsession. This option will automatically save the database session before releasing 
+all the resources. To enable this, use the following option in addtion to launchdb command:
+\begin{lstlisting}[style=mystyle]
+--save_on_exit
+\end{lstlisting}
+\item To change number of hours the database session is active
+  \begin{lstlisting}[style=mystyle]
+--walltime <num_hours>
+  \end{lstlisting}
+  
+\end{itemize}
+
+
+
+
+All the rest of the commands have to executed from the compute node. For these login 
+to the designated compute node using
+\begin{lstlisting}[style=mystyle]
+user@sfxlogin1: ssh <server_ip>
+user@sfxlogin1: cd <your-work-directory>
+user@sfxlogin1: . /home/pgxxc/public/dicex_pgsa/dicex_pgsa.sh
+\end{lstlisting}
+
+\paragraph{\question{How to stop the database instance?}}\hfill\\
+\begin{lstlisting}[style=mystyle]
+user@sfxlogin1: dicex_pgsa.sh --stopdb <session-identifier>
+\end{lstlisting}
+This will stop the database session.
+
+\paragraph{\question{How to restart the database instance?}}\hfill\\
+\begin{lstlisting}[style=mystyle]
+user@sfxlogin1: dicex_pgsa.sh --restartdb <session-identifier>
+\end{lstlisting}
+This will restart the stopped the database session.
+
+\paragraph{\question{How to save the database instance?}}\hfill\\
+\begin{lstlisting}[style=mystyle]
+user@sfxlogin1: dicex_pgsa.sh --savedb <session-identifier>
+\end{lstlisting}
+This will stop the database instance and save the image 
+
+\paragraph{\question{How to  resume a saved  instance?}}\hfill\\
+\begin{lstlisting}[style=mystyle]
+user@sfxlogin1: dicex_pgsa.sh --resumedb <session-identifier>
+\end{lstlisting}
+
+\paragraph{\question{How to cleanup the database instance?}}\hfill\\
+\begin{lstlisting}[style=mystyle]
+user@sfxlogin1: dicex_pgsa.sh --cleandb <session-identifier>
+\end{lstlisting}
+This will stop the database and remove/delete the instance from the disk. 
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

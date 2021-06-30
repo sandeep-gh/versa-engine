@@ -1,0 +1,3 @@
+--copy __TBL_NAME__ FROM '__DIR__/__FN__' with (FORMAT csv, DELIMITER E'\t', HEADER 'true')
+copy __TBL_NAME__ FROM '__DIR__/__FN__' with (FORMAT csv, DELIMITER E'\t' __has_header__)
+--psql -p __PORT__ postgres -c "copy __TBL_NAME__ FROM stdin with (FORMAT csv, DELIMITER E'\t')"

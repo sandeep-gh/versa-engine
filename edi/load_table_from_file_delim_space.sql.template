@@ -1,0 +1,1 @@
+copy __TBL_NAME__ FROM '__DIR__/__FN__' with (FORMAT csv, DELIMITER E' ' __has_header__)

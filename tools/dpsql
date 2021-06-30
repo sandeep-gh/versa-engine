@@ -1,0 +1,11 @@
+if [ $# -eq 0 ]
+  then
+    dbsession=`ls -tr dbsession_*.py| tail -n 1`
+else
+    dbsession=dbsession_$1.py
+fi
+
+host=`grep server_ip $dbsession  |sed 's/\"//g' |  awk 'BEGIN{FS="="}{print $2}'`
+port=`grep server_port $dbsession | sed 's/\"//g' | awk 'BEGIN{FS="="}{print $2}'`
+echo $host $port
+psql -h ${host} -p ${port} postgres

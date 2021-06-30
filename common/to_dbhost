@@ -1,0 +1,13 @@
+if [ $# -eq 0 ]
+  then
+    sessionfn=`ls -tr dbsession_*.py| tail -n 1`
+else
+    sessionfn="dbsession_"$1".py"
+fi
+wd=`pwd`
+host=`grep server_ip $sessionfn  |sed 's/\"//g' |  awk 'BEGIN{FS="="}{print $2}'`
+#ssh -t $host "cd $wd; bash  /home/pgxxc/public/dicex.sh"
+#ssh -t $host "cd $wd; . ${dicex_base_dir}/versa.sh; bash"
+ssh -t $host "cd $wd; . ${dicex_base_dir}/dicex_${cluster_name}.sh; bash"
+
+

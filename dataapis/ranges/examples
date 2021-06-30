@@ -1,0 +1,89 @@
+import range
+
+from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func
+from sqlalchemy.orm import relationship, backref
+from sqlalchemy.ext.declarative import declarative_base
+from range import IntRangeType
+from range import IntInterval
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+Base = declarative_base()
+ 
+ 
+class Department(Base):
+    __tablename__ = 'department2'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    range = Column(IntRangeType(step=1000))
+ 
+
+engine = create_engine('sqlite:///orm_in_detail.sqlite')
+ 
+session = sessionmaker()
+session.configure(bind=engine)
+Base.metadata.create_all(engine)
+
+s = session()
+d = Department(name="IT1",range=[100,200])
+s.add(d)
+d = Department(name="IT2",range=[150,250])
+s.add(d)
+s.commit() 
+
+
+s.query(Department).filter(Department.name == "IT")
+
+
+
+
+
+from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func
+from sqlalchemy.orm import relationship, backref
+from sqlalchemy.ext.declarative import declarative_base
+ 
+ 
+Base = declarative_base()
+ 
+ 
+class Department(Base):
+    __tablename__ = 'department'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+ 
+ 
+class Employee(Base):
+    __tablename__ = 'dasnjdsanjksaddd'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    # Use default=func.now() to set the default hiring time
+    # of an Employee to be the current time when an
+    # Employee record was created
+    hired_on = Column(DateTime, default=func.now())
+    department_id = Column(Integer, ForeignKey('department.id'))
+    # Use cascade='delete,all' to propagate the deletion of a Department onto its Employees
+    department = relationship(
+        Department,
+        backref=backref('employees',
+                         uselist=True,
+                         cascade='delete,all'))
+ 
+ 
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///orm_in_detail.sqlite')
+ 
+from sqlalchemy.orm import sessionmaker
+session = sessionmaker()
+session.configure(bind=engine)
+Base.metadata.create_all(engine)
+
+
+d = Department(name="IT")
+emp1 = Employee(name="John", department=d)
+s = session()
+s.add(d)
+s.add(emp1)
+s.commit()
+s.commit()
+s.query(Employee).all()
+
