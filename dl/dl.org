@@ -1,0 +1,22 @@
+* debug login
+** pywikibot/login.py
+line 307, in login
+    self.login_to_site()
+** data/api.py", line 2970, in login_to_site
+    raise pywikibot.exceptions.APIError(code=status, info=fail_reason)
+
+
+
+* decoding login scripts for media wiki
+fam = "csvpackdl"
+code = "en"
+site = pywikibot.site._apisite.APISite
+login_request = self.site._request(use_get=False,
+                                           parameters=parameters)
+
+ login_result = login_request.submit()
+
+** closing now
+the main issue was wrong password
+look into data/api.py for 
+http_request: uri, body, header, paramstring
