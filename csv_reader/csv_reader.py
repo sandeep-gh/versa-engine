@@ -117,8 +117,8 @@ def get_csv_report(csvfilename):
             samples.append(rs.row)
             samples.append(re.row)
 
-        if len(header_lines) < 10:
-            samples.append(rs.row)
+        #if len(header_lines) < 10:
+        #    samples.append(rs.row)
 
         num_lines += 2
 
@@ -135,6 +135,10 @@ def get_csv_report(csvfilename):
         delimiter_name = ""
         if rs.dialect.delimiter == ",":
             delimiter_name = "comma"
+        if rs.dialect.delimiter == " ":
+            delimiter_name = "space"
+        if rs.dialect.delimiter == "|":
+            delimiter_name = "pipe"
 
         # we are getting overflow of lines; -2 is just a hack
         return csv_report_t(rs.dialect.delimiter, delimiter_name, num_header_lines, cols_type, rs.dialect, header_candidates, samples, header_lines, num_lines - 2)

@@ -154,6 +154,12 @@ def parse_filetype_elem(filetype_elem=None):
 
 
 def gen_edconfig_elem():
-    edcfg = xu.read_string('''<edconfig><files></files></edconfig>''')
-    files_elem = xu.get_elems(edcfg, 'files', path_prefix='./', uniq=True)
-    return [edcfg, files_elem]
+    edcfg_root = xu.read_string('''<edconfig><files></files></edconfig>''')
+    files_elem = xu.get_elems(edcfg_root, 'files', uniq=True)
+    return [edcfg_root, files_elem]
+
+def add_file_elem_to_edcfg(edcfg_root, file_elem):
+    files_elem = xu.get_elems(edcfg_root, 'files', uniq=True)
+    files_elem.append(file_elem)
+    pass
+ 
