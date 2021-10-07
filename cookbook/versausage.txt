@@ -1,0 +1,412 @@
+# from /media/kabira/1TBSSD/From_ibm_13inch_laptop/bf9bef62-3c33-4a6b-a7d8-d75ddbf25524
+./sandeep/personal_git/self_work/parse/build_report_on_similarity_by_irj.py:import versa_utils as vu
+./sandeep/personal_git/self_work/parse/build_report_on_similarity_by_irj.py:import versa_core.birmo as bo
+./sandeep/personal_git/self_work/parse/build_report_on_similarity_by_irj.py:import versa_core.relational as re
+./sandeep/personal_git/self_work/parse/build_report_on_similarity_by_irj.py:import versa_core.schema as sch
+./sandeep/personal_git/self_work/parse/build_report_on_similarity_by_irj.py:import versa_core.generators as gen
+./sandeep/personal_git/self_work/parse/compute_similarity_by_sax.py:import versa_core.generators as gen
+./sandeep/personal_git/self_work/parse/compute_similarity_by_sax.py:import versa_core.schema as sch
+./sandeep/personal_git/self_work/parse/compute_similarity_by_sax.py:import versa_core.birmo as bo
+./sandeep/personal_git/self_work/parse/data_definitions.py:import versa_utils as vu
+./sandeep/personal_git/self_work/parse/build_media_info_db.py:import versa_core.generators as gen
+./sandeep/ndsslgit/versa_all/SIDAIP/sidap_utils.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/SIDAIP/sidap_utils.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/SIDAIP/gp_cfg_repo.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/SIDAIP/gp_cfg_repo.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/versa_header.py:#from versa_api import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_header.py:#from versa_apip import * #loades seaborn which seems to be running into trouble
+./sandeep/ndsslgit/versa_all/VERSA/versa_redirect.py:import versa_api_list as val
+./sandeep/ndsslgit/versa_all/VERSA/versa_redirect.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/VERSA/create_view.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/VERSA/versa_agg_vs_inst_distribution.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_agg_vs_inst_distribution.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_plot_v2.py:from versa_api_utils import scan
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_list.py:from versa_api_meta import buildstmt
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_list.py:from versa_api_meta import getAttrList
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_list.py:from versa_api_meta import getAttrList_but
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_list.py:from versa_api_meta import set_primary_keys
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_list.py:from versa_api_meta import get_pkeys
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_list.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_agg_vs_inst_distribution_test_fraction.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_agg_vs_inst_distribution_test_fraction.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_analysis.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_analysis.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/versa_utils.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_join.py:from versa_api_meta import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_join.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/VERSA/versa_household_test.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_socnet.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_socnet.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/VERSA/versa_socnet.py:    visited  = session.query(visited).subquery() #TODO: versan cannot recognize dynamically create class; needs fixing    
+./sandeep/ndsslgit/versa_all/VERSA/versa_tests_print.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_tests_print.py:from versa_api_utils import print_table
+./sandeep/ndsslgit/versa_all/VERSA/versa_part_of_distribution.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_part_of_distribution.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/versa_part_of_distribution.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/VERSA/versa_analysis.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_analysis.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/tests/test_bfs.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/tests/create_graph.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_impl.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/versa_impl.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_impl.py:from versa_header import * #provides port, session, sqlalchemy resources, etc.
+./sandeep/ndsslgit/versa_all/VERSA/versa_gen_sequence_api.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_gen_sequence_api.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/versa_gen_sequence_api.py:import versa_core.export as ex
+./sandeep/ndsslgit/versa_all/VERSA/versa_tests_list.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_binned_distribution.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_binned_distribution.py:import versa_gen_sequence_api as vgsa
+./sandeep/ndsslgit/versa_all/VERSA/versa_binned_distribution.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/versa_binned_distribution.py:def versa_binned_part_of_distribution(session=None, rmo=None, ilabel=None, binned_attr=None, binning_cfg=None, container_attr=None, member_attr=None):
+./sandeep/ndsslgit/versa_all/VERSA/versa_geo.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_geo.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/VERSA/versa_aggregate_test.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:#from  versa_api_meta import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:from versa_redirect import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:from versa_api_utils import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:from versa_api_join import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:#from versa_api_plot_v2 import plot_XY
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:from versa_core.export import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:from versa_core.relational import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:from versa_core.schema import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_api.py:from versa_core.utils import *
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_api_utils as vapiu
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_api_meta as  vam
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_api_plot as vapip
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/vertex_in_tract.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/test_composites.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/test_composites.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/test_composites.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/test_composites.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_api_utils as vapiu
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_api_meta as  vam
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_api_plot as vapip
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/large_join_and_materialize.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/versa_over_test.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/versa_over_test.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/versa_over_test.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/communication_unit_test.py:import versa_communication as vc
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_api_utils as vapiu
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_api_meta as  vam
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_api_plot as vapip
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/VERSA/unit_tests/gis_types_vs_materialize.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_join_list.py:from versa_api_meta import *
+./sandeep/ndsslgit/versa_all/VERSA/versa_api_join_list.py:        print("versa join: common attributes will be renamed")
+./sandeep/ndsslgit/versa_all/VERSA/test_versa_build_ranges.py:import versa_gen_sequence_api as vgsa
+./sandeep/ndsslgit/versa_all/VERSA/test_versa_build_ranges.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/versa_unit_tests/protopop_filters.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/versa_unit_tests/protopop_filters.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/versa_unit_tests/protopop_filters.py:import versa_core.relational as re
+./sandeep/ndsslgit/versa_all/versa_unit_tests/protopop_filters.py:import versa_core.export as ex
+./sandeep/ndsslgit/versa_all/versa_unit_tests/protopop_filters.py:import versa_core.schema as sc
+./sandeep/ndsslgit/versa_all/versa_unit_tests/unit_tests.py:import versa_core.relational as re
+./sandeep/ndsslgit/versa_all/versa_unit_tests/unit_tests.py:import versa_core.export as ex
+./sandeep/ndsslgit/versa_all/versa_unit_tests/unit_tests.py:import versa_core.schema as sc
+./sandeep/ndsslgit/versa_all/versa_unit_tests/unit_tests.py:import versa_core.utils as utils
+./sandeep/ndsslgit/versa_all/versa_unit_tests/unit_tests.py:import versa_core.plot as plt
+./sandeep/ndsslgit/versa_all/versa_unit_tests/unit_test_generators.py:import versa_core.generators as gen
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_api_utils as vapiu
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_api_meta as  vam
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_api_plot as vapip
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/apps/versa_apps/synpop_travel_analysis/from_tiger_tract_to_radition_data.py:import versa_apip as vapip
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_api_utils as vapiu
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_api_meta as  vam
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_api_plot as vapip
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/prepare_airline_travel_data/population_movement.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_activities.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_activities.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_activities.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_activities.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_activities.py:# doing it manually -- versa has no api for this currently
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_activities.py:#again manually -- versa has no api for this as well -- don't mind the messiness
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_locations.py:import versa_geo as vg
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_locations.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_locations.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_locations.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_locations.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/patch_locations.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/generate_patched_model.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/model_va_tidewater/generate_patched_model.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/vector_disease_model/prepare_zika_data_model.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/vector_disease_model/prepare_zika_data_model.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/vector_disease_model/prepare_zika_data_model.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/vector_disease_model/prepare_zika_data_model.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/vector_disease_model/prepare_zika_data_model.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/zika_san_paulo_fishnet.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/zika_san_paulo_fishnet.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/zika_san_paulo_fishnet.py:import versa_api as vapil
+./sandeep/ndsslgit/versa_all/apps/dicex_modeling/zika_san_paulo_fishnet.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/apidocs/conf.py:# sys.path.insert(0, '/sfxhome/sandeep/NDSSL-Software/versa_all_py3')
+./sandeep/ndsslgit/versa_all/apidocs/conf.py:    (master_doc, 'versa', 'Versa Documentation',
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_raster_api.py:from versa_api_meta import buildstmt
+./sandeep/ndsslgit/versa_all/VERSA_ranges/unit_test_raster.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/VERSA_ranges/unit_test_raster.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA_ranges/unit_test_raster.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA_ranges/lat_lon_to_geom.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_geom.py:import versa_api_meta
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_geom.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_geom.py:    rmoShape = versa_api_meta.buildstmt(session, rmoShape)
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_geom.py:    rmoShape = versa_api_meta.buildstmt(session, rmoShape)
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:#import versa_fishnet_api as vf
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:#import versa_api_utils
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:#session = versa_api_utils.build_session(dbsession)
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:import versa_api_meta
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:    shapeObject = versa_api_meta.buildstmt(session, rmoShape)
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:    pointObject = versa_api_meta.buildstmt(session, rmoPoint)
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:    coordObject = versa_api_meta.buildstmt(session, rmoCoord)
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:#     shapeObject = versa_api_meta.buildstmt(session, rmoShape)
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_fishnet_api.py:#     latLonObject = versa_api_meta.buildstmt(session, rmoPoint)
+./sandeep/ndsslgit/versa_all/VERSA_ranges/unit_test_api.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/VERSA_ranges/unit_test_api.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_range_api.py:from versa_api_meta import buildstmt
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_range_api.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_range_api.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_range_api.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/VERSA_ranges/versa_range_api.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/versa_core/birmo.py:from  versa_api_meta import buildstmt
+./sandeep/ndsslgit/versa_all/versa_core/birmo.py:import versa_core.schema as sc
+./sandeep/ndsslgit/versa_all/versa_core/birmo.py:import versa_core.relational as re
+./sandeep/ndsslgit/versa_all/versa_core/birmo.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/versa_core/birmo.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/versa_core/birmo.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/versa_core/birmo.py:from  versa_api_meta import rename_attribute
+./sandeep/ndsslgit/versa_all/versa_core/relational.py:from  versa_api_meta import buildstmt
+./sandeep/ndsslgit/versa_all/versa_core/relational.py:from  versa_api_meta import rename_attribute
+./sandeep/ndsslgit/versa_all/versa_core/relational.py:from versa_api_meta import getAttrList
+./sandeep/ndsslgit/versa_all/versa_core/relational.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/versa_core/relational.py:import versa_core.schema as sch
+./sandeep/ndsslgit/versa_all/versa_core/relational.py:from versa_core.schema import cast_integer
+./sandeep/ndsslgit/versa_all/versa_core/plot.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/versa_core/plot.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/versa_core/plot.py:import versa_core.export as ex
+./sandeep/ndsslgit/versa_all/versa_core/plot.py:import versa_core.relational as re
+./sandeep/ndsslgit/versa_all/versa_core/plot.py:import versa_core.schema as sc
+./sandeep/ndsslgit/versa_all/versa_core/export.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/versa_core/export.py:import versa_core.schema as schema
+./sandeep/ndsslgit/versa_all/versa_core/export.py:import versa_core.relational as re
+./sandeep/ndsslgit/versa_all/versa_core/export.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/versa_core/schema.py:import versa_api_meta as vam
+./sandeep/ndsslgit/versa_all/versa_core/schema.py:from versa_api_meta import getAttrList, getAttrList_but
+./sandeep/ndsslgit/versa_all/versa_core/schema.py:    #satisfying versa
+./sandeep/ndsslgit/versa_all/versa_core/data_parallel.py:import versa_core.relational as re
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_impl as vi
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_api_utils as vau
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_api as vapi
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_api_list as vapil
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_api_utils as vapiu
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_api_meta as  vam
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:#import versa_api_plot as vapip
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_range_api as vra
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_geom as vg
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_core.relational as re
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_core.export as ex
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_core.schema as sc
+./sandeep/ndsslgit/versa_all/versa_core/runner.py:import versa_core.utils as utils
+./sandeep/ndsslgit/versa_all/versa_core/generators.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/versa_core/generators.py:import versa_core.export as ex
+./sandeep/ndsslgit/versa_all/versa_core/generators.py:import versa_core.schema as sch
+./sandeep/ndsslgit/versa_all/versa_core/utils.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/versa_core/utils.py:import versa_gen_sequence_api as vgsa
+./sandeep/ndsslgit/versa_all/versa_core/chunk_processor.py:import versa_utils as vu
+./sandeep/ndsslgit/versa_all/versa_core/chunk_processor.py:import versa_core.relational as re
+./sandeep/ndsslgit/versa_all/versa_core/socnet.py:import versa_core.relational as re
+./sandeep/ndsslgit/versa_all/versa_core/socnet.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_by_slice.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_by_slice.py:import versa_apip as vapip
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_by_slice.py:import versa_core.schema as sc
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_by_slice.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_by_slice.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_by_slice.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_by_slice.py:import versa_utils as vu
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/mec_analysis_for_gp_all_countries_in_one.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/mec_analysis_for_gp_debug.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_plot.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/prepare_analysis.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/step_by_step_for_hsw_py3.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/step_by_step_for_hsw_py3.py:import versa_apip as vapip
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/step_by_step_for_hsw_py3.py:import versa_core.schema as sc
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/step_by_step_for_hsw_py3.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/step_by_step_for_hsw_py3.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/step_by_step_for_hsw_py3.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/step_by_step_for_hsw_py3.py:import versa_utils as vu
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/step_by_step_for_hsw_py3.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/step_by_step_for_hsw_py3.py:import versa_core.data_parallel as dp
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/plot_mec_analysis_for_gp_all_countries_in_one.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/gp_subpopulation.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/gp_subpopulation.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/gp_subpopulation.py:# import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/gp_subpopulation.py:# import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_using_api.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_using_api.py:import versa_apip as vapip
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_using_api.py:import versa_core.schema as sc
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_using_api.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_using_api.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_using_api.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_using_api.py:import versa_utils as vu
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_using_api.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/parallel_process_per_country_using_api.py:import versa_core.data_parallel as dp
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumcenter_analysis_for_gp.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution.py:import versa_apip as vapip
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution.py:import versa_core.schema as sc
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/mec_analysis_for_gp.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_v2.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_v2.py:import versa_apip as vapip
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_v2.py:import versa_core.schema as sc
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_v2.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_v2.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_step_by_step.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_step_by_step.py:import versa_apip as vapip
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_debug.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_debug.py:import versa_apip as vapip
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_debug.py:import versa_core.schema as sc
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_debug.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/gp_analysis/circumradius_distribution_debug.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:import versa_api_list as vapil
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:import versa_core.export as ex
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:import versa_core.schema as sch
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:import versa_range_api as vra
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:import versa_core.trirmo as trirmo
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:    import versa_api_list as vapil
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros.py:    # import versa_core.trirmo as trirmo
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros_step_by_step.py:import versa_core.schema as sch
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros_step_by_step.py:# import versa_api_list as vapil
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros_step_by_step.py:# import versa_core.trirmo as trirmo
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/plot_mec_distribution.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_circumradius_distribution.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_flow_info.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_flow_info.py:import versa_api_list as vapil
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_flow_info.py:import versa_core.export as ex
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_flow_info.py:import versa_core.schema as sch
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_flow_info.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_flow_info.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_flow_info.py:import versa_range_api as vra
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_flow_info.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/acs_flow_info.py:#import versa_core.trirmo as trirmo
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros_step_by_step_nonhome.py:# import versa_api_list as vapil
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/mer_distribution_us_metros_step_by_step_nonhome.py:# import versa_core.trirmo as trirmo
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_api_list as vapil
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_core.export as ex
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_core.schema as sc
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_range_api as vra
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/mec_protopop_analysis/agent_based_way_to_estimate_hhw_pairs_step_by_step.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/code_snippets/test_drive_data_parallel.py:#import versa_core.data_parallel as dp
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_api_list as vapil
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_core.export as ex
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_core.schema as sc
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_range_api as vra
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_core.socnet as socnet
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:import versa_geom as vg
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions.py:#     import versa_core.plot as plt
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/draw_map.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_core.plot as pl
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_api_list as vapil
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_core.export as ex
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_core.schema as sc
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_core.relational as re
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_core.birmo as birmo
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_range_api as vra
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_api_join_list as vajl
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/fuse_align_tract_geom_tabblock_pophu.py:import versa_fishnet_api as vfa
+./sandeep/ndsslgit/commuting_analytics/mec_with_tabblock/circumradius_distribution_acs_for_us_regions_workflow.py:import versa_core.plot as pl
+./sandeep/experiments/versa_resurrect/dbsession_testing.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmprs5uuv1w"
+./sandeep/experiments/versa_resurrect/tmphwm9_rni/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmphwm9_rni"
+./sandeep/experiments/versa_resurrect/tmpx9zinzvz/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmpx9zinzvz"
+./sandeep/experiments/versa_resurrect/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmpgh86ssck"
+./sandeep/experiments/versa_resurrect/tmpgh86ssck/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmpgh86ssck"
+./sandeep/experiments/versa_resurrect/tmpo8c3kw0b/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmpo8c3kw0b"
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/command/easy_install.py:    folder or vice versa. Having the old finders cached may then cause Python
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:    def UniversalCRTSdkDir(self):
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:        Microsoft Universal CRT SDK directory.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:    def UniversalCRTSdkLastVersion(self):
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:        Microsoft Universal C Runtime SDK last version
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:            self.UniversalCRTSdkDir, 'lib'))
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:                    'Windows.Foundation.UniversalApiContract',
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:        Microsoft Universal C Runtime SDK Libraries
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:        lib = os.path.join(self.si.UniversalCRTSdkDir, 'lib')
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:        Microsoft Universal C Runtime SDK Include
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:        include = os.path.join(self.si.UniversalCRTSdkDir, 'include')
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:        Microsoft Universal C Runtime SDK version subdir
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/setuptools/msvc.py:        ucrtver = self.si.UniversalCRTSdkLastVersion
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/requests/packages.py:    # This traversal is apparently necessary such that the identities are
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/requests/utils.py:    r"""Unquotes a header value.  (Reversal of :func:`quote_header_value`).
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/html5lib/_inputstream.py:                detector = UniversalDetector()
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/hebrewprober.py:# The Original Code is Mozilla Universal charset detector code.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/chardistribution.py:        # http://www.mozilla.org/projects/intl/UniversalCharsetDetection.html
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/mbcsgroupprober.py:# The Original Code is Mozilla Universal charset detector code.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/sbcsgroupprober.py:# The Original Code is Mozilla Universal charset detector code.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/mbcharsetprober.py:# The Original Code is Mozilla Universal charset detector code.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/langhebrewmodel.py:# The Original Code is Mozilla Universal charset detector code.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/cli/chardetect.py:    u = UniversalDetector()
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/enums.py:    ``UniversalDetector``.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/charsetprober.py:# The Original Code is Mozilla Universal charset detector code.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/__init__.py:    detector = UniversalDetector()
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/latin1prober.py:# The Original Code is Mozilla Universal charset detector code.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/chardet/sbcharsetprober.py:# The Original Code is Mozilla Universal charset detector code.
+./sandeep/experiments/versa_resurrect/lib/python3.6/site-packages/pip/_vendor/distlib/database.py:    specifier, if such was provided). Also, for more efficient traversal, for
+./sandeep/experiments/versa_resurrect/tmp_ykspuml/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmp_ykspuml"
+./sandeep/experiments/versa_resurrect/tmpf_n50n0f/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmpf_n50n0f"
+./sandeep/experiments/versa_resurrect/tmp7lpmxbi5/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmp7lpmxbi5"
+./sandeep/experiments/versa_resurrect/tmpybadwg2h/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmpybadwg2h"
+./sandeep/experiments/versa_resurrect/tmpo5orbzy9/dbsession_testing.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmpo5orbzy9"
+./sandeep/experiments/versa_resurrect/tmpu28iw9w8/dbsession_hh.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmpu28iw9w8"
+./sandeep/experiments/versa_resurrect/tmpe00i5vcx/dbsession_testing.py:work_dir="/home/sandeep/experiments/versa_resurrect/tmpe00i5vcx"
+

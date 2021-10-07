@@ -1,0 +1,12 @@
+<!DOCTYPE edconfig [
+<!ENTITY var_metadata_dir "/groups/NDSSL/synpop_test/">
+<!ENTITY var_model_dir "/groups/NDSSL/espresso_model_data/us_metros">
+]>
+
+<edcfg xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="&var_model_dir;/region_pid.xml" parse="xml"/>
+  <xi:include href="&var_model_dir;/region_label_id.xml" parse="xml"/>
+  <xi:include href="&var_model_dir;/synpop.xml" parse="xml"/>
+  <xi:include href="/groups/NDSSL/synpop_test/national_flu/modules/travel/airline/airline_travel.xml" parse="xml"/>
+  
+</edcfg>

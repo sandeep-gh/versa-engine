@@ -1,0 +1,37 @@
+
+* env
+
+
+* host controller args
+** pingdb
+print if session is active
+
+** stopdb
+stop the session
+
+** restoredb/resumedb
+from a saved session -- restart the session
+
+** savedb
+
+** cleandb
+stop and remove files
+
+** startdb
+
+** restartdb
+
+** other parameters
+
+shared_buffer_size
+max_wal_size
+maintenance_work_mem
+work_mem
+effective_cache_size
+checkpoint_timeout
+log_statement: none, ddl, mod, all
+*** TODO  run_mode: not working
+
+
+
+

@@ -1,0 +1,47 @@
+* launch db
+python3 ${dicex_basedir}/controller/frontend_controller_cmd_main.py.sh --dbsession test7 --launchjob
+** TODO needs simplification
+
+* get session
+** from versa
+vi.init
+or
+runner.py
+
+* load data
+** from edi
+${dicex_basedir}/edi/dicex_edi.py.sh --dbsession test7  --edcfg  ~/Datasets/datalouge/globalfoodprices.csvpack --load_data_csv
+** from versa
+
+
+${dicex_basedir}/rmo/versa.py.sh --session_id rmo2 --launch
+${dicex_basedir}/rmo/versa.py.sh --data_config /media/kabira/home/databank/versa/data_definitions/test_data1.xml --loa
+d_all_csv
+${dicex_basedir}/rmo/versa.py.sh --data_config /media/kabira/home/databank/versa/data_definitions/test_shp.xml --build
+_rmo
+${dicex_basedir}/rmo/versa.py.sh --pingdb
+${dicex_basedir}/rmo/versa.py.sh --session_id rmo2 --startdb
+
+** 4 options
+*** build_rmo
+takes metadata and builds and rmo
+
+*** build_orm TBD
+discarded
+
+*** only_rmo ???
+don't ingest, build the rmo only for the given dataconfig 
+
+*** build_rmo_file
+this essentially wraps files
+
+
+* struggles for getting started
+** the paths are mess:
+where to find csvpack
+from csvpack where to find md
+from md: where to find the csv file
+
+** missing
+import versa_header import *
+from model generation

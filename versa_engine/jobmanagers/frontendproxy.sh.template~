@@ -1,0 +1,1 @@
+python3 ${dicex_basedir}/controller/frontend_proxy.py  ${frontend_proxy_port} &

@@ -1,0 +1,65 @@
+#!/bin/bash
+cd ${run_dir}
+
+echo "server_ip=\"`hostname`\""  > dbsession_${dbdesc}.py
+echo "server_port=${dbport}" >> dbsession_${dbdesc}.py
+echo "work_dir=\"${work_dir}\"" >> dbsession_${dbdesc}.py
+echo "jobid=\"${jobid}\"" >> dbsession_${dbdesc}.py
+echo "cluster_name=\"${cluster_name}\"">> dbsession_${dbdesc}.py
+. ${setenv_path}
+cd ${work_dir}
+ln -s ${run_dir}/dbsession_${dbdesc}.py .
+
+rm dbstatus_err 2>/dev/null
+rm dbstatus_out 2>/dev/null
+
+#removing existing shared memory -- 
+#may  conflict if other programs on the same compute node
+#${dicex_pgsa_dir}/kill_ipcs.sh
+
+python3 ${dicex_basedir}/controller/host_controller_cmd_main.py.sh  ${start_cmd}  > ${work_dir}/launch.out 2>${work_dir}/launch.err ##launch or resume db
+
+##Check if db is launched correctly
+res=`python3 ${dicex_basedir}/controller/host_controller_cmd_main.py.sh  ${ping_cmd}`
+echo "res = ${res}" >>${work_dir}/launch.out
+if [ $res -eq 0 ]
+then
+    python3 ${dicex_basedir}/common/send_signal.py ${hostname} ${message_port} "database launch failed"
+    exit;
+
+else
+    echo "so what" >>${work_dir}/launch.out
+    echo ${db_data_home} >>${work_dir}/launch.out
+    
+    pgpid=`head -n 1 ${db_data_home}/data/postmaster.pid`
+    echo "pgpid=${pgpid}" >> dbsession_${dbdesc}.py
+
+fi
+cd ..
+${postdb_start_script}
+cd -
+python3 ${dicex_basedir}/common/send_signal.py ${hostname} ${message_port} "database started"
+
+# rm ${closedb_flag_fn}
+# while [ 1 = 1 ]
+# do
+# 	if [ -f  ${closedb_flag_fn} ]
+# 	then
+# 		break
+# 	fi
+# 	sleep 5m
+# done
+
+# echo "exiting and cleaning"
+# python3 ${dicex_pgsa_dir}/DBEngineHostControllerCmdMain.py.sh --stop
+# cd ..
+# ${postdb_stop_script}
+# cd -
+# save_on_exit="${save_on_exit_val}"
+# if [ $save_on_exit == "no" ]
+# then
+#      echo "cleaning up db without saving"
+#      python3 ${dicex_pgsa_dir}/DBEngineHostControllerCmdMain.py.sh --work_dir ${work_dir} --port ${server_port} --cleanup
+# else
+#     python3 ${dicex_pgsa_dir}/DBEngineHostControllerCmdMain.py.sh --work_dir=${work_dir} --port ${server_port} --savedb ${dbdesc}
+# fi

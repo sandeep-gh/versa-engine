@@ -1,0 +1,34 @@
+<!DOCTYPE edconfig [
+<!ENTITY var_metadata_dir "/groups/NDSSL/synpop_test/">
+<!ENTITY var_model_dir "/groups/NDSSL/synpop_test/">
+]>
+
+<edconfig xmlns:xi="http://www.w3.org/2001/XInclude">
+
+
+<files>
+<!--     <file> -->
+<!--       <location>&var_model_dir;/census_tract_geom.csv</location> -->
+<!--       <metadata>&var_metadata_dir;/census_tract_geom.md</metadata> -->
+<!--       <filetype> -->
+<!--         <filetype>csv</filetype> -->
+<!--         <strict_formatted>True</strict_formatted> -->
+<!--         <delimiter>pipe</delimiter> -->
+<!--       </filetype> -->
+<!--       <model>census_tract_geom</model> -->
+<!--     </file> -->
+
+
+
+<file>
+  <location>/groups/NDSSL/synpop_test/network_radiation/input/i00/vertex_geo.txt</location>
+  <metadata>/groups/NDSSL/synpop_test/network_radiation/input/i00/vertex_geo.md</metadata>
+  <model>vertex_geo</model>
+  <filetype>
+	<filetype>csv</filetype>
+ 	<delimiter>space</delimiter>
+	</filetype>
+</file>
+  </files>
+</edconfig>
+	

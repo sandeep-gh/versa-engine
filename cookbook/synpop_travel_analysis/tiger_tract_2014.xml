@@ -1,0 +1,73 @@
+<!DOCTYPE edconfig [
+<!ENTITY var_metadata_dir "/home/pgxxc/public/dicex_metadata_repo/">
+<!ENTITY var_model_dir "/groups/NDSSL/synpop_test/">
+]>
+
+<edcfg>
+<files>
+<file>
+
+      <metadata>&var_metadata_dir;/tiger_tract_2014.md</metadata>
+      <filetype>shape</filetype>
+      <locations>
+        <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_11_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_15_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_10_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_50_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_49_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_02_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_09_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_23_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_24_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_25_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_31_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_16_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_28_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_30_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_20_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_08_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_21_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_22_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_19_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_05_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_01_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_32_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_27_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_26_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_13_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_29_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_17_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_12_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_06_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_33_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_34_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_35_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_37_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_38_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_39_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_40_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_44_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_41_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_46_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_47_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_42_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_53_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_54_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_60_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_48_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_66_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_56_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_55_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_69_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_78_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_72_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_45_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_18_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_04_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_51_tract.sh</location>
+      <location>/groups/NDSSL/synpop_test/tiger_2014_tract/tl_2014_36_tract.sh</location>
+      </locations>
+      <model_name>tiger_tract_2014</model_name>
+    </file>
+</files>
+</edcfg>

@@ -1,0 +1,23 @@
+* TODOs
+** build orm without loading data;
+external tables
+** lazy load 
+
+** the utility/meaning of relabel common attributes in vapjl
+
+** clean up the mess of plotting/align with chartjs
+please use addict
+
+* Code comments
+** plot_XY
+pltinfo.plot.{title/xlabel/ylabel}
+pltinfo.{x_attr/y_attr}
+
+
+* Issues
+** on import scip.stats
+ImportError: /home/kabira/Builds/python3.10/lib/python3.10/site-packages/scipy/spatial/transform/rotation.cpython-310-arm-linux-gnueabihf.so: undefined symbol: _PyGen_Send
+
+** unable to create run_dir in specific location (non /tmp) location
+
+** what if frontendproxy fails to start

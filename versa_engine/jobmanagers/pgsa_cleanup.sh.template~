@@ -1,0 +1,11 @@
+.   ${dicex_base_dir}/dicex_${cluster_name}.sh
+
+
+cd ${work_dir}
+python ${dicex_pgsa_dir}/dicex_pgsa.py.sh  ${remove_cmd}
+
+
+
+
+
+

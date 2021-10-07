@@ -1,0 +1,63 @@
+<edconfig>
+
+  <data_server>
+    <name>ndsslprd</name>
+    <server_type>oracle</server_type>
+    <user>gp_test_viewer</user>
+    <url>//ndssldb.vbi.vt.edu:1521/ndsslprd.bioinformatics.vt.edu</url>
+    <password>CoBD4uNdsslprdweR</password>
+    <sfxalias>ndsslprd</sfxalias>  
+  </data_server>
+  
+  <data_server>
+    <name>ndssl</name>
+    <server_type>oracle</server_type>
+    <user>sandeep</user>
+    <url>//noldor-db.vbi.vt.edu:1521/ndssl.bioinformatics.vt.edu</url>
+    <password>change1t</password>
+    <sfxalias>ndssl</sfxalias>
+  </data_server>
+
+
+
+  <remote_tables>
+    <remote_table>
+	<server>ndssl</server>
+	<schema>SANDEEP</schema>
+	<name>TIDEWATER_PERSON_INFO</name>
+	<model_name>persons</model_name>
+    </remote_table>
+
+    <remote_table>
+	<server>ndssl</server>
+	<schema>SANDEEP</schema>
+	<name>TIDEWATER_LOCATIONS_NONHOME</name>
+	<model_name>locations</model_name>
+    </remote_table>
+
+    <remote_table>
+      <server>ndssl</server>
+      <schema>SANDEEP</schema>
+      <name>TIDEWATER_LOCATIONS_HOME</name>
+      <model_name>household</model_name>
+    </remote_table>
+
+    <remote_table>
+      <server>ndssl</server>
+      <schema>SANDEEP</schema>
+      <name>TIDEWATER_ACTIVITIES_NONHOME</name>
+      <model_name>activities_nonhome</model_name>
+    </remote_table>
+
+    <remote_table>
+      <server>ndssl</server>
+      <schema>SANDEEP</schema>
+      <name>TIDEWATER_ACTIVITIES_HOME</name>
+      <model_name>activities_home</model_name>
+    </remote_table>
+
+    
+
+  </remote_tables>
+
+</edconfig>

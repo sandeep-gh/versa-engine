@@ -1,0 +1,11 @@
+.   ~/.versa/env.sh
+
+
+cd ${work_dir}
+python3  ${dicex_pgsa_dir}/DBEngineHostControllerCmdMain.py.sh   ${remove_cmd}
+
+
+
+
+
+

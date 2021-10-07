@@ -1,0 +1,110 @@
+./ndsslgit/dicex_all/VERSA_Cookbook/market_vs_commodity.py:restype['x_attr'] = 'region_name_arr'
+./ndsslgit/dicex_all/VERSA_Cookbook/example_build_rank_frequency_region_subregion.py:restype={'x_attr':'array_capacity', 'y_attr':'array_count'}
+./ndsslgit/dicex_all/VERSA_Cookbook/example_build_rank_frequency_region_subregion_using_aggregates.py:restype={'x_attr':'array_region_sz', 'y_attr':'array_num_regions'}
+./ndsslgit/dicex_all/VERSA_Cookbook/example_build_rank_frequency_region_subregion_using_aggregates_intm_tex.py:restype={'x_attr':'array_region_sz', 'y_attr':'array_num_regions'}
+./ndsslgit/dicex_all/VERSA_Cookbook/example_build_age_distribution_population.py:restype={'x_attr':'arr_age', 'y_attr':'arr_pop_sz'}
+./ndsslgit/dicex_all/VERSA_Cookbook/versa_cookbook.tex:restype={'x_attr':'array_region_sz', 'y_attr':'array_num_regions'}
+./ndsslgit/dicex_all/VERSA_Cookbook/versa_cookbook.tex:restype={'x_attr':'array_capacity', 'y_attr':'array_count'}
+./ndsslgit/dicex_all/versa_cookbook.tex~:restype={'x_attr':'array_region_sz', 'y_attr':'array_num_regions'}
+./ndsslgit/dicex_all/versa_cookbook.tex~:restype={'x_attr':'array_capacity', 'y_attr':'array_count'}
+./ndsslgit/dicex_all/versa_cookbook.tex:restype={'x_attr':'array_region_sz', 'y_attr':'array_num_regions'}
+./ndsslgit/dicex_all/versa_cookbook.tex:restype={'x_attr':'array_capacity', 'y_attr':'array_count'}
+./ndsslgit/VERSA/versa_agg_vs_inst_distribution.py:    restype = {'xtype': 'enum', 'x_attr' : enum_attr}
+./ndsslgit/VERSA/versa_agg_vs_inst_distribution.py:        restype['x_attr'] = restype['x_attr'] + '_arr'
+./ndsslgit/VERSA/versa_api_plot_v2.py:        xValues = aquery_res._asdict()[restype['x_attr']]
+./ndsslgit/VERSA/versa_api_plot_v2.py:    xValues = aquery_res._asdict()[plot_info['x_attr']]
+./ndsslgit/VERSA/versa_api_plot_v2.py:    x_attr = restype['x_attr']
+./ndsslgit/VERSA/versa_api_plot_v2.py:        x_vals = res._asdict()[x_attr]
+./ndsslgit/VERSA/versa_agg_vs_inst_distribution_test_fraction.py:    restype = {'xtype': 'enum', 'x_attr' : enum_attr}
+./ndsslgit/VERSA/versa_agg_vs_inst_distribution_test_fraction.py:        restype['x_attr'] = restype['x_attr'] + '_arr'
+./ndsslgit/VERSA/versa_api_analysis.py:def build_stmt_X_vs_Y(session=None, rmo=None, x_attr=None, y_attr=None):
+./ndsslgit/VERSA/versa_api_analysis.py:	return vapi.proj(session, rmo, [x_attr, y_attr])
+./ndsslgit/VERSA/versa_api_analysis.py:def build_distribution_X_vs_Y(session=None, rmo=None, x_attr=None, y_attr=None):
+./ndsslgit/VERSA/versa_api_analysis.py:        for rec in vapi.scan(session, build_stmt_X_vs_Y(session, rmo, x_attr, y_attr)):
+./ndsslgit/VERSA/versa_api_analysis.py:		xValues.append(rec._asdict()[x_attr])
+./ndsslgit/VERSA/versa_part_of_distribution.py:#     restype_member_count = {'x_attr': container_attr + '_count_arr', 'y_attr': container_attr + '_rankfreq_arr'}
+./ndsslgit/VERSA/versa_part_of_distribution.py:    plot_context = {'x_attr': 'array_' + 'num_' +member_attr, 'y_attr': 'array_freq_num_'+member_attr}
+./ndsslgit/VERSA/versa_part_of_distribution.py:    restype={'type': 'XY/Z', 'z_attr': category_attr, 'x_attr': 'count_arr', 'y_attr':container_attr+ '_count_freq_arr'}    
+./ndsslgit/VERSA/versa_part_of_distribution.py:    #restype_member_count = {'x_attr': container_attr + '_count_arr', 'y_attr': container_attr + '_rankfreq_arr'}
+./ndsslgit/VERSA/versa_api_analysis.ps:(def build_stmt_X_vs_Y\(session=None, rmo=None, x_attr=None, y_attr=None\):) s
+./ndsslgit/VERSA/versa_api_analysis.ps:(        return vapi.proj\(session, rmo, [x_attr, y_attr]\)) s
+./ndsslgit/VERSA/versa_api_analysis.ps:(def build_distribution_X_vs_Y\(session=None, rmo=None, x_attr=None, y_attr=None\):) s
+./ndsslgit/VERSA/versa_api_analysis.ps:(        for rec in vapi.scan\(session, build_stmt_X_vs_Y\(session, rmo, x_attr, y_attr\)\):) s
+./ndsslgit/VERSA/versa_api_analysis.ps:(                xValues.append\(rec._asdict\(\)[x_attr]\)) s
+./ndsslgit/VERSA/AdvAnalyticsTemplate_user_manual.tex:          'x_attr': container_attr + '_count_arr', 
+./ndsslgit/VERSA/versa_binned_distribution.py:#     restype_member_count = {'x_attr': container_attr + '_count_arr', 'y_attr': container_attr + '_rankfreq_arr'}
+./ndsslgit/versa_all_py3/VERSA/versa_agg_vs_inst_distribution.py:    restype = {'xtype': 'enum', 'x_attr' : enum_attr}
+./ndsslgit/versa_all_py3/VERSA/versa_agg_vs_inst_distribution.py:        restype['x_attr'] = restype['x_attr'] + '_arr'
+./ndsslgit/versa_all_py3/VERSA/versa_api_plot_v2.py:        xValues = aquery_res._asdict()[restype['x_attr']]
+./ndsslgit/versa_all_py3/VERSA/versa_api_plot_v2.py:    xValues = aquery_res._asdict()[plot_info['x_attr']]
+./ndsslgit/versa_all_py3/VERSA/versa_api_plot_v2.py:    x_attr = restype['x_attr']
+./ndsslgit/versa_all_py3/VERSA/versa_api_plot_v2.py:        x_vals = res._asdict()[x_attr]
+./ndsslgit/versa_all_py3/VERSA/versa_agg_vs_inst_distribution_test_fraction.py:    restype = {'xtype': 'enum', 'x_attr' : enum_attr}
+./ndsslgit/versa_all_py3/VERSA/versa_agg_vs_inst_distribution_test_fraction.py:        restype['x_attr'] = restype['x_attr'] + '_arr'
+./ndsslgit/versa_all_py3/VERSA/versa_api_analysis.py:def build_stmt_X_vs_Y(session=None, rmo=None, x_attr=None, y_attr=None):
+./ndsslgit/versa_all_py3/VERSA/versa_api_analysis.py:	return vapi.proj(session, rmo, [x_attr, y_attr])
+./ndsslgit/versa_all_py3/VERSA/versa_api_analysis.py:def build_distribution_X_vs_Y(session=None, rmo=None, x_attr=None, y_attr=None):
+./ndsslgit/versa_all_py3/VERSA/versa_api_analysis.py:        for rec in vapi.scan(session, build_stmt_X_vs_Y(session, rmo, x_attr, y_attr)):
+./ndsslgit/versa_all_py3/VERSA/versa_api_analysis.py:		xValues.append(rec._asdict()[x_attr])
+./ndsslgit/versa_all_py3/VERSA/versa_part_of_distribution.py:#     restype_member_count = {'x_attr': container_attr + '_count_arr', 'y_attr': container_attr + '_rankfreq_arr'}
+./ndsslgit/versa_all_py3/VERSA/versa_part_of_distribution.py:    plot_context = {'x_attr': 'array_' + 'num_' +member_attr, 'y_attr': 'array_freq_num_'+member_attr}
+./ndsslgit/versa_all_py3/VERSA/versa_part_of_distribution.py:    restype={'type': 'XY/Z', 'z_attr': category_attr, 'x_attr': 'count_arr', 'y_attr':container_attr+ '_count_freq_arr'}    
+./ndsslgit/versa_all_py3/VERSA/versa_part_of_distribution.py:    #restype_member_count = {'x_attr': container_attr + '_count_arr', 'y_attr': container_attr + '_rankfreq_arr'}
+./ndsslgit/versa_all_py3/VERSA/AdvAnalyticsTemplate_user_manual.tex:          'x_attr': container_attr + '_count_arr', 
+./ndsslgit/versa_all_py3/VERSA/versa_binned_distribution.py:#     restype_member_count = {'x_attr': container_attr + '_count_arr', 'y_attr': container_attr + '_rankfreq_arr'}
+Binary file ./ndsslgit/versa_all_py3/apidocs/_build/doctrees/VERSA.doctree matches
+./ndsslgit/versa_all_py3/apidocs/err~:    for rec in vapi.scan(session, build_stmt_X_vs_Y(session, rmo, x_attr, y_attr)):
+./ndsslgit/versa_all_py3/apidocs/err:    for rec in vapi.scan(session, build_stmt_X_vs_Y(session, rmo, x_attr, y_attr)):
+./ndsslgit/versa_all_py3/versa_core/plot.py:    agg_by_category = vapil.aggregate_array(session, rmo=rmo, arr_attrl=[x_attr, y_attr], agg_key=category_attr) 
+./ndsslgit/versa_all_py3/versa_core/plot.py:            xVals = rec._asdict()['array_' + x_attr]
+Binary file ./ndsslgit/versa_all_py3/versa_core/plot.pyc matches
+Binary file ./.cpan/Metadata matches
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_agg_vs_inst_distribution.py:    restype = {'xtype': 'enum', 'x_attr' : enum_attr}
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_agg_vs_inst_distribution.py:        restype['x_attr'] = restype['x_attr'] + '_arr'
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_api_plot_v2.py:        xValues = aquery_res._asdict()[restype['x_attr']]
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_api_plot_v2.py:    xValues = aquery_res._asdict()[plot_info['x_attr']]
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_api_plot_v2.py:    x_attr = restype['x_attr']
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_api_plot_v2.py:        x_vals = res._asdict()[x_attr]
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_agg_vs_inst_distribution_test_fraction.py:    restype = {'xtype': 'enum', 'x_attr' : enum_attr}
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_agg_vs_inst_distribution_test_fraction.py:        restype['x_attr'] = restype['x_attr'] + '_arr'
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_api_analysis.py:def build_stmt_X_vs_Y(session=None, rmo=None, x_attr=None, y_attr=None):
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_api_analysis.py:	return vapi.proj(session, rmo, [x_attr, y_attr])
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_api_analysis.py:def build_distribution_X_vs_Y(session=None, rmo=None, x_attr=None, y_attr=None):
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_api_analysis.py:        for rec in vapi.scan(session, build_stmt_X_vs_Y(session, rmo, x_attr, y_attr)):
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_api_analysis.py:		xValues.append(rec._asdict()[x_attr])
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_part_of_distribution.py:#     restype_member_count = {'x_attr': container_attr + '_count_arr', 'y_attr': container_attr + '_rankfreq_arr'}
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_part_of_distribution.py:    plot_context = {'x_attr': 'array_' + 'num_' +member_attr, 'y_attr': 'array_freq_num_'+member_attr}
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_part_of_distribution.py:    restype={'type': 'XY/Z', 'z_attr': category_attr, 'x_attr': 'count_arr', 'y_attr':container_attr+ '_count_freq_arr'}    
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_part_of_distribution.py:    #restype_member_count = {'x_attr': container_attr + '_count_arr', 'y_attr': container_attr + '_rankfreq_arr'}
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/AdvAnalyticsTemplate_user_manual.tex:          'x_attr': container_attr + '_count_arr', 
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/VERSA/versa_binned_distribution.py:#     restype_member_count = {'x_attr': container_attr + '_count_arr', 'y_attr': container_attr + '_rankfreq_arr'}
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/versa_core/plot.py:    agg_by_category = vapil.aggregate_array(session, rmo=rmo, arr_attrl=[x_attr, y_attr], agg_key=category_attr) 
+./to_keep_or_to_throw/espresso_install_standalone/versa_all/versa_core/plot.py:            xVals = rec._asdict()['array_' + x_attr]
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/nodes/outfuncs.c:	WRITE_INT_FIELD(max_attr);
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/plan/analyzejoins.c:	 * As a micro-optimization, it seems better to start with max_attr and
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/plan/analyzejoins.c:	for (attroff = innerrel->max_attr - innerrel->min_attr;
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/plan/analyzejoins.c:		for (attroff = otherrel->max_attr - otherrel->min_attr;
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/plan/initsplan.c:			Assert(attno >= rel->min_attr && attno <= rel->max_attr);
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/plancat.c: *	max_attr	highest valid AttrNumber
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/plancat.c:	rel->max_attr = RelationGetNumberOfAttributes(relation);
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/plancat.c:	Assert(rel->max_attr >= rel->min_attr);
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/plancat.c:		palloc0((rel->max_attr - rel->min_attr + 1) * sizeof(Relids));
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/plancat.c:		palloc0((rel->max_attr - rel->min_attr + 1) * sizeof(int32));
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/relnode.c:	/* min_attr, max_attr, attr_needed, attr_widths are set below */
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/relnode.c:			rel->max_attr = list_length(rte->eref->colnames);
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/relnode.c:				palloc0((rel->max_attr - rel->min_attr + 1) * sizeof(Relids));
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/relnode.c:				palloc0((rel->max_attr - rel->min_attr + 1) * sizeof(int32));
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/util/relnode.c:	joinrel->max_attr = 0;
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/path/costsize.c:		if (te->resno < rel->min_attr || te->resno > rel->max_attr)
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/path/costsize.c:			Assert(var->varattno <= rel->max_attr);
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/path/costsize.c:			for (i = 1; i <= rel->max_attr; i++)
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/path/indxpath.c:	Bitmapset  *index_attrs = NULL;
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/path/indxpath.c:		index_attrs =
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/path/indxpath.c:			bms_add_member(index_attrs,
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/path/indxpath.c:	result = bms_is_subset(attrs_used, index_attrs);
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/path/indxpath.c:	bms_free(index_attrs);
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/backend/optimizer/path/allpaths.c:	nattrs = rel->max_attr - rel->min_attr + 1;
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/include/nodes/relation.h: *		min_attr, max_attr - range of valid AttrNumbers for rel
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/include/nodes/relation.h:	AttrNumber	max_attr;		/* largest attrno of rel */
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/include/nodes/relation.h:	Relids	   *attr_needed;	/* array indexed [min_attr .. max_attr] */
+./projects_in_simfrastructure/simpp/pgxc_with_mpi/postgres-xc/src/include/nodes/relation.h:	int32	   *attr_widths;	/* array indexed [min_attr .. max_attr] */

@@ -1,0 +1,34 @@
+<!DOCTYPE edcfg[
+	  <!ENTITY var_metadata_dir "/home/sandeep/NDSSL-Software/dicex_metadata_repo">
+	  <!ENTITY var_metadata_dir "/home/pgxxc/public/dicex_metadata_repo">
+	  <!ENTITY var_model_dir "/groups/NDSSL/studies/zika_2016/tidewater/">
+	  ]>
+
+<edcfg>
+  <files>
+    <file>
+      <location>&var_model_dir;/tidewater_person_info.csv</location>
+      <metadata>&var_metadata_dir;/tidewater_person_info.md</metadata>
+    </file>
+    <file>
+      <location>&var_model_dir;/tidewater_locations_home.csv</location>
+      <metadata>&var_metadata_dir;/tidewater_household.md</metadata>
+    </file>
+
+    <file>
+      <location>&var_model_dir;/tidewater_activities_home.csv</location>
+      <metadata>&var_metadata_dir;/tidewater_activities_home.md</metadata>
+    </file>
+    <file>
+      <location>&var_model_dir;/tidewater_activities_nonhome.csv</location>
+      <metadata>&var_metadata_dir;/tidewater_activities_nonhome.md</metadata>
+    </file>
+    <file>
+      <location>&var_model_dir;/tidewater_locations_nonhome.csv</location>
+      <metadata>&var_metadata_dir;/tidewater_locations_nonhome.md</metadata>
+    </file>
+
+
+  </files>
+
+</edcfg>
