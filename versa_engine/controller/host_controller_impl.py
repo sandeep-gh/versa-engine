@@ -1,8 +1,8 @@
 from string import Template
 import subprocess
 import os
-from controller.appconfig import AppConfig
-from controller import pgsa_utils as pgu
+from versa_engine.controller.appconfig import AppConfig
+from versa_engine.controller import pgsa_utils as pgu
 
 
 def initdb(db_data_home, port, allow_connections_from_subnet='True', db_cfg_param_val_dict=None, log_statement='none'):
@@ -55,17 +55,19 @@ def startdb(db_data_home, port=None, db_cfg_param_val_dict=None, log_statement='
     assert(port is not None)
     assert(db_data_home is not None)
     default_db_cfg_param_val_dict = dict()
-    default_db_cfg_param_val_dict['shared_buffers'] = "1GB"
-    default_db_cfg_param_val_dict['maintenance_work_mem'] = "1GB"
-    default_db_cfg_param_val_dict['work_mem'] = "1GB"
-    default_db_cfg_param_val_dict['effective_cache_size'] = "1GB"
-    default_db_cfg_param_val_dict['max_wal_size'] = "1GB"
+    default_db_cfg_param_val_dict['shared_buffers'] = "50MB"
+    default_db_cfg_param_val_dict['maintenance_work_mem'] = "50MB"
+    default_db_cfg_param_val_dict['work_mem'] = "50MB"
+    default_db_cfg_param_val_dict['effective_cache_size'] = "50MB"
+    default_db_cfg_param_val_dict['max_wal_size'] = "50MB"
     default_db_cfg_param_val_dict['checkpoint_timeout'] = "5min"
     default_db_cfg_param_val_dict['log_statement'] = "all"
     default_db_cfg_param_val_dict['max_connections'] = "5"
 
     if db_cfg_param_val_dict is not None:
         default_db_cfg_param_val_dict.update(db_cfg_param_val_dict)
+
+    print ("cfg param = ", default_db_cfg_param_val_dict)
     setenv_path = AppConfig.get_setevn_path()
     start_cmd_template = Template(". ${setenv_path}; pg_ctl -o \" -F -p ${port} -c log_connections=True -c log_disconnections=True -c fsync=off -c shared_buffers=${shared_buffers} -c maintenance_work_mem=${maintenance_work_mem} -c work_mem=${work_mem} -c effective_cache_size=${effective_cache_size}  -c bgwriter_delay=10000ms -c wal_writer_delay=10000ms -c max_wal_size=${max_wal_size} -c checkpoint_timeout=${checkpoint_timeout} -c full_page_writes=off -c synchronous_commit=off -c log_statement=${log_statement} -c max_connections=${max_connections}\" -D ${db_data_home}/data -l ${db_data_home}/logfile -w start")
 
@@ -75,6 +77,7 @@ def startdb(db_data_home, port=None, db_cfg_param_val_dict=None, log_statement='
     a.update(default_db_cfg_param_val_dict)
 
     start_cmd_str = start_cmd_template.substitute(a)
+    print (start_cmd_str)
     subprocess.call(start_cmd_str, shell=True)
     pgu.create_extension_postgis(port)
 

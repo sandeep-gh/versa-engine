@@ -191,7 +191,7 @@ def get_elems_by_parent_child_key_value(root, parent, child, key, value, uniq=Fa
     childnodes = root.findall(xpath_str)
     if uniq:
         if(len(childnodes) == 0):
-            assert(0)
+            assert(0) #Throw exception i guess
         assert(len(childnodes) == 1)
         return childnodes[0]
     return childnodes

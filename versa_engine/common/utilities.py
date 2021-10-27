@@ -12,11 +12,11 @@ import tempfile
 import rpyc
 from multiprocessing.connection import Listener
 from multiprocessing.connection import Client
-
-import common.xmlutils as xu
 from urllib.parse import urlparse
 import requests
 from hashlib import sha256
+
+from versa_engine.common import xmlutils as xu
 module_dir = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -122,6 +122,7 @@ def wait_for_file(fn, msg, wait_time=5):
 
 
 def get_listener(port):
+    print ("get listener = ", gethostname())
     address = (gethostname(), port)     # family is deduced to be 'AF_INET'
     listener = Listener(address, authkey=b'secret password')
     return listener
@@ -146,6 +147,7 @@ def signal_listen(listener, num_senders=1):
 
 
 def signal_send(host, port, msg='database loaded'):
+    print ("signal_send ", host)
     address = (host, port)     # family is deduced to be 'AF_INET'
     conn = Client(address, authkey=b'secret password')
     conn.send(msg)

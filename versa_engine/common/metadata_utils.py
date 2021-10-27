@@ -1,5 +1,5 @@
-import common.xmlutils as xu
-import dl
+from versa_engine.common import xmlutils as xu
+from versa_engine.dl import dl
 #element,
 def read_metadata(metadata_fn):
     if xu.check_if_xml_tree(metadata_fn):

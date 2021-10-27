@@ -17,14 +17,14 @@ rm dbstatus_out 2>/dev/null
 #may  conflict if other programs on the same compute node
 #${dicex_pgsa_dir}/kill_ipcs.sh
 
-python3 ${dicex_basedir}/controller/host_controller_cmd_main.py.sh  ${start_cmd}  > ${work_dir}/launch.out 2>${work_dir}/launch.err ##launch or resume db
+${pybin_path} ${dicex_basedir}/controller/host_controller_cmd_main.py.sh  ${start_cmd}  > ${work_dir}/launch.out 2>${work_dir}/launch.err ##launch or resume db
 
 ##Check if db is launched correctly
-res=`python3 ${dicex_basedir}/controller/host_controller_cmd_main.py.sh  ${ping_cmd}`
+res=`${pybin_path} ${dicex_basedir}/controller/host_controller_cmd_main.py.sh  ${ping_cmd}`
 echo "res = ${res}" >>${work_dir}/launch.out
 if [ $res -eq 0 ]
 then
-    python3 ${dicex_basedir}/common/send_signal.py ${hostname} ${message_port} "database launch failed"
+    ${pybin_path} ${dicex_basedir}/common/send_signal.py ${hostname} ${message_port} "database launch failed"
     exit;
 
 else
@@ -38,7 +38,7 @@ fi
 cd ..
 ${postdb_start_script}
 cd -
-python3 ${dicex_basedir}/common/send_signal.py ${hostname} ${message_port} "database started"
+${pybin_path} ${dicex_basedir}/common/send_signal.py ${hostname} ${message_port} "database started"
 
 # rm ${closedb_flag_fn}
 # while [ 1 = 1 ]

@@ -1,4 +1,4 @@
-from scripts.pagefromfile import PageFromFileReader, PageFromFileRobot
+from core.scripts.pagefromfile import PageFromFileReader, PageFromFileRobot
 from pywikibot import config
 from pywikibot import config, Site
 config.log = ['*']

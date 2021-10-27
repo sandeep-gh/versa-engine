@@ -4,9 +4,9 @@ pywikibot.output('This will initialize the logger')
 logger = logging.getLogger('pywiki')
 logger.setLevel(logging.ERROR)
 
-from scripts.pagefromfile import PageFromFileReader, PageFromFileRobot
+from core.scripts.pagefromfile import PageFromFileReader, PageFromFileRobot
+from core.scripts.login import main as loginmain
 from pywikibot import config, Site, Page
-from scripts.login import main as loginmain
 import os
 #config.log = ['*']
 

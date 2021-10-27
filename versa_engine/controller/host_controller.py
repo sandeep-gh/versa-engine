@@ -5,8 +5,8 @@ start/stop/resume a database on the host machine
 from string import Template
 import getpass
 
-from controller import pgsa_utils as pgu, host_controller_impl as impl
-from common import utilities
+from versa_engine.controller import pgsa_utils as pgu, host_controller_impl as impl
+from versa_engine.common import utilities
 
 dbuser=getpass.getuser()
 def initdb(dbdesc=None, host_type='standard', log_statement='none', db_cfg_param_val_dict=dict(), wdir="./"):

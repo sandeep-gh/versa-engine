@@ -2,8 +2,8 @@
 
 #TODOs: multiple file arguments
 import argparse
-from jobmanagers.jobmanager import get_jobmanager
-import controller.host_controller as cntrl
+from versa_engine.jobmanagers.jobmanager import get_jobmanager
+import versa_engine.controller.host_controller as cntrl
 
 parser = argparse.ArgumentParser()
 
