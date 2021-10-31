@@ -8,7 +8,7 @@ import imp
 from datetime import datetime
 import psycopg2 as pgsai
 
-from common import utilities
+from versa_engine.common import utilities
 
 # mpi_file_transfer_exec="/home/pgxxc/public/FastTransferUtils/mpiSendRecv_multiproc"
 # mpi_file_transfer_exec="/home/sandeep/NDSSL-Software/dicex_data_ingestion/dbimg_save_and_resume/multipleProcSendRecv"

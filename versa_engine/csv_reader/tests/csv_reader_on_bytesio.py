@@ -1,31 +1,18 @@
 import base64
 from io import BytesIO, TextIOWrapper
-import csv_infer_schema as cis
+from versa_engine.csv_reader import csv_infer_schema as cis
 import os
 #print("filesize in bytes = ",  os.stat("x.csv").st_size)
-data = open("/home/kabira/Datasets/2014_Adult_HIV_prevalence_rate_by_County.csv", 'rb').read()
-estr = base64.b64encode(data)
-bstr = base64.b64decode(estr)
-#bp = BytesIO(bstr)
 
-#print("stream size in bytes ", bp.getbuffer().nbytes)
-#ssz = bp.getbuffer().nbytes
-#tp = TextIOWrapper(bp, encoding='utf-8')
+from versa_engine.csv_reader import csv_infer_schema as cis
+import glob
 
-#read_chars = 0
-# for l in tp:
-#    read_chars += len(l)
-#num_lines = 0
-# with open("x.csv", 'r') as fh:
-#     for l, r in zip(fh, tp):
-#         read_chars = read_chars + len(l) + len(r)
-#         if read_chars > ssz:
-#             break
-#         num_lines += 2
-
-# print(r)
-# print(read_chars)
-# print(num_lines)
-r = cis.get_csv_report(bstr)
-print(r)
-#assert (r is not None)
+source_dirbase = "/home/kabira/Data/csvs_for_versa_testing"
+for _fn in glob.glob(f"{source_dirbase}/*.csv"):
+    print(_fn)
+    try:
+        data = open(_fn, 'rb').read()
+        r = cis.get_csv_report(data)
+        print(r)
+    except UnicodeDecodeError:
+        print("unable to parse with encoding ", _fn)

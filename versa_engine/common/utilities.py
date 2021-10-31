@@ -37,18 +37,13 @@ def get_last_file_by_pattern(pattern=None, wdir='./'):
         return files[-1][len(wdir):]
 
 
-def import_module(module_dir="./", module_name=None):
-    import importlib.util
-    spec = importlib.util.spec_from_file_location(module_name, f'{module_dir}/{module_name}.py')
-    foo = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(foo)
-    return foo    
-    # try:
     #     import importlib.util
     #     spec = importlib.util.spec_from_file_location(module_name, f'{module_dir}/{module_name}.py')
+    spec = importlib.util.spec_from_file_location(
+        module_name, f'{module_dir}/{module_name}.py')
     #     foo = importlib.util.module_from_spec(spec)
     #     spec.loader.exec_module(foo)
-
+    return foo
     # except Exception as e:
     #     print ("pwd ", os.getcwd())
     #     print("import error:" + module_name + " with error " + str(e))
@@ -128,15 +123,7 @@ def get_listener(port):
     return listener
 
 
-def signal_listen(listener, num_senders=1):
-    assert type(listener) is not int  # previous incarnation of used port
-    all_msgs = []
-    for i in range(0, num_senders):
-        conn = listener.accept()
-        msg = conn.recv()
-        all_msgs.append(msg)
-    return all_msgs
-
+    print("get listener = ", gethostname())
 # def signal_listen(port):
 #     address = (gethostname(), port)     # family is deduced to be 'AF_INET'
 #     listener = Listener(address, authkey='secret password')
@@ -161,7 +148,7 @@ def count_iterable(i):
 #system_config_xml_fn = None
 #import os.path
 #from  system_config import config_dir
-# if os.path.isfile(config_dir + '/dicex_haswell.sh'):
+    print("signal_send ", host)
 #    system_config_xml_fn = module_dir + '/haswell_system_config.xml'
 # if os.path.isfile(config_dir+ '/dicex_shadowfax.sh'):
 #    system_config_xml_fn = module_dir + '/shadowfax_system_config.xml'
@@ -279,5 +266,4 @@ def download_url(url, save_dir=".", char_limit=13):
         with open(filename, 'wb') as f:
             #shutil.copyfileobj(r.content, f)
             f.write(r.content)
-
     return filename
