@@ -212,7 +212,6 @@ def get_csv_report(csvstore):
     header_lines = []
     re = next(reverse_inferer)
     #logger.info("last line", re.row, " ", re.cols_type)
-    print("last line", re.row, " ", re.cols_type)
 
     dialect = re.dialect
     samples.append(re.row)
@@ -299,6 +298,26 @@ def get_csv_report(csvstore):
 
         pass
 
+    #sketches = {}
+    #sketch[col_pos] = sketch
+    # duplicate_cols = []
+    # for col_pos in range(0,num_cols):
+    #     if expected_cols_type[col_pos] == float:
+    #         sketch.remove(col_pos)
+            
+
+    # for col_pos in sketch.keys():
+    #     for _ in [rs, re]:
+    #         if _.row not in sketch[col_pos]:
+    #             sketch[col_pos].add(_.row)
+    #         else:
+    #             sketch.remove(col_pos)
+    #             duplicate_cols.append(col_pos)
+                        
+
+                    
+                
+                
     if report_status:
         cols_type = ['string' if _ is None else _ for _ in expected_cols_type]
 

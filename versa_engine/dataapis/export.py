@@ -2,19 +2,19 @@ import sys
 import os
 import imp
 import inspect
+from string import Template
+from tabulate import tabulate
 from sqlalchemy import MetaData, Column, Integer, String, Table, Index, Interval, Float
 from sqlalchemy.orm import class_mapper, defer, mapper
 from sqlalchemy.sql.sqltypes import NullType
-import pandas as pd
-from pandas import DataFrame
+#import pandas as pd
+#from pandas import DataFrame
 from postgres_copy import copy_to, copy_from, relabel_query
-import common.xmlutils as xu
-from string import Template
-import rmo.versa_api_meta as vam
-import dataapis.schema as schema
-import dataapis.relational as re
-import dataapis.utils as vu
-from tabulate import tabulate
+from versa_engine.common  import xmlutils as xu
+from versa_engine.rmo import versa_api_meta as vam
+from versa_engine.dataapis import schema, relational as re, utils as vu
+
+
 
 
 def print_table(session, rmo):

@@ -1,6 +1,6 @@
-import common.xmlutils as xu
-from edi.data_server import data_server
-import common.metadata_utils as mu
+from versa_engine.common import xmlutils as xu
+from versa_engine.edi.data_server import data_server
+from versa_engine.common import metadata_utils as mu
 
 
 def read_config_file(cfg_fn):
@@ -158,8 +158,8 @@ def gen_edconfig_elem():
     files_elem = xu.get_elems(edcfg_root, 'files', uniq=True)
     return [edcfg_root, files_elem]
 
+
 def add_file_elem_to_edcfg(edcfg_root, file_elem):
     files_elem = xu.get_elems(edcfg_root, 'files', uniq=True)
     files_elem.append(file_elem)
     pass
- 

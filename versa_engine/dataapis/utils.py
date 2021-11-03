@@ -1,5 +1,5 @@
-import rmo.utils as ru
-import dataapis.generators as generators
+from versa_engine.rmo import utils as ru
+from versa_engine.dataapis  import generators 
 
 #submod testing -- ignore
 def load_rmos(rmo_names=None, rmo_dir=None):

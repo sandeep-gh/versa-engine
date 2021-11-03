@@ -8,7 +8,7 @@ from sqlalchemy import INTEGER
 from sqlalchemy import BIGINT
 from sqlalchemy import FLOAT
 from sqlalchemy import VARCHAR
-from geoalchemy2 import Geometry
+#from geoalchemy2 import Geometry
 Base = declarative_base()
 
 

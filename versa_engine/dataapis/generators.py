@@ -1,12 +1,9 @@
 from sqlalchemy import Table, Column, Integer, Unicode, MetaData, create_engine
-
-from sqlalchemy import Table, Column, Integer, Unicode, MetaData, create_engine
 from sqlalchemy.orm import mapper, create_session
 import sqlalchemy as sa
 from sqlalchemy import PrimaryKeyConstraint
-import dataapis.utils as vu
-import dataapis.export as ex
-import dataapis.schema as sch
+from versa_engine.dataapis import utils as vu, export as ex, schema as sch
+
 def build_ranges(session=None,  prefix=None,  start=0, end=None, step=None):
     '''
     create table with columns <prefix>_id, <prefix>_lb, <prefix>_ub

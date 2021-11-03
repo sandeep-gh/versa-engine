@@ -7,10 +7,9 @@ from tabulate import tabulate
 from pandas import DataFrame
 from string import Template
 
-import common.xmlutils as xu
-import common.utilities as utilities
-import controller.pgsa_utils as pgu
-import rmo.versa_api_meta as vam
+from versa_engine.common import xmlutils as xu, utilities
+from versa_engine.controller import pgsa_utils as pgu
+from versa_engine.rmo import versa_api_meta as vam
 
 def import_model(model_name, model_dir=None):
 

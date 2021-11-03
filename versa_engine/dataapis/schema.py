@@ -6,9 +6,9 @@ from sqlalchemy.sql.sqltypes import NullType
 from string import Template
 from  sqlalchemy.sql.expression import cast
 
-import rmo.versa_api_meta as vam
-from rmo.header import *
-from rmo.versa_api_meta import getAttrList, getAttrList_but
+from versa_engine.rmo import versa_api_meta as vam
+from versa_engine.rmo.header import *
+from versa_engine.rmo.versa_api_meta import getAttrList, getAttrList_but
 
 
 
