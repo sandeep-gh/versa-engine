@@ -2,14 +2,10 @@ import random
 from sqlalchemy import MetaData, Column, Integer, String, Table, Index, Interval, Float, VARCHAR
 from  sqlalchemy.sql.expression import func, select, desc, over, cast, literal_column
 from sqlalchemy import Column, Integer, String, Table, Index, Interval, Float
-
-import rmo.versa_api_meta as vam
-from  rmo.versa_api_meta import buildstmt
-from  rmo.versa_api_meta import rename_attribute
-from rmo.versa_api_meta import getAttrList
-import dataapis.schema as sch
-
-from dataapis.schema import cast_integer
+from versa_engine.rmo import versa_api_meta as vam
+from  versa_engine.rmo.versa_api_meta import buildstmt, rename_attribute, getAttrList
+from versa_engine.dataapis import schema as sch
+from versa_engine.dataapis.schema import cast_integer
 
 
 def select(session=None, cls=None):

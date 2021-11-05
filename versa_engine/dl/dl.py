@@ -1,22 +1,23 @@
+import os
+from pywikibot import config, Site, Page
+from scripts.login import main as loginmain
+from scripts.pagefromfile import PageFromFileReader, PageFromFileRobot
 import logging
 import pywikibot
 pywikibot.output('This will initialize the logger')
 logger = logging.getLogger('pywiki')
 logger.setLevel(logging.ERROR)
 
-from core.scripts.pagefromfile import PageFromFileReader, PageFromFileRobot
-from core.scripts.login import main as loginmain
-from pywikibot import config, Site, Page
-import os
 #config.log = ['*']
 
 #config.logfilename = "auniqfile"
 #config.verbose_output = False
-#print(config.log)
-
+# print(config.log)
 
 
 site = None
+
+
 def login():
     global site
     autocreate = False
@@ -27,10 +28,10 @@ def login():
     try:
         site.login(autocreate=autocreate)
         login_user = site.user()
-    except  Exception as e:
-        print ("login error", e)
+    except Exception as e:
+        print("login error", e)
     return login_user
-    
+
 
 def get_page_text(title):
     page = Page(site, title)
