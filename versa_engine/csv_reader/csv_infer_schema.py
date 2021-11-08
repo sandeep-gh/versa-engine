@@ -214,7 +214,7 @@ def get_csv_report(csvstore):
     #logger.info("last line", re.row, " ", re.cols_type)
 
     dialect = re.dialect
-    samples.append(re.row)
+    #samples.append(re.row)
     num_lines = 1
     chars_read += re.chars
     header_zone = True
