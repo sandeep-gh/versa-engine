@@ -33,6 +33,16 @@ def login():
     return login_user
 
 
+def page_exists(title):
+    """
+    check if dl already has
+    a page with corresponding
+    title
+    """
+    page = Page(site, title)
+    return page.pageid != 0
+
+
 def get_page_text(title):
     page = Page(site, title)
     return page.text
