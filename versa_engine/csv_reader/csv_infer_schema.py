@@ -86,7 +86,7 @@ def inferschema_line(l, expected_cols_type=None, use_dialect=None):
                      for x in strconv.convert_series_with_type(row, include_type=True, types=expected_cols_type)]
 
     return ScannerReport(row, use_dialect, cols_type, len(l))
-#['string' if _ is None else _ for _ in cols_type]
+# ['string' if _ is None else _ for _ in cols_type]
 
 
 def validateschema_reader(linereader,  expected_cols_type, dialect):
@@ -163,82 +163,6 @@ def reverse_reader(fn_or_bytes, encoding='utf-8'):
 #         if ct1 != ct2:
 #             cols_type[idx] = "string"
 
-def concile_schema(expected_cols_type, rs_cols, rs_row, re_cols, re_row, hasnulls):
-    cct = []  # conciled column type
-    for idx, (ec, rs, re) in enumerate(zip(expected_cols_type, rs_cols, re_cols)):
-        if len(set([ec, rs, re])) != 1:  # TODO: change to match stmt
-            rst = strconv.convert(rs_row[idx], include_type=True)
-            ret = strconv.convert(re_row[idx], include_type=True)
-            if rst[1] in ['int', 'float'] and ret[1] in ['int', 'float']:
-                cct.append('float')
-            elif None in [rst[1], ret[1]]:
-                cct.append(None)
-            elif rst[1] == 'EmptyString' and ret[1] == 'EmptyString':
-                hasnulls[idx] = True
-                cct.append('EmptyString')
-            elif rst[1] == 'EmptyString':
-                hasnulls[idx] = True
-                cct.append(ret[1])
-                hasnulls[idx] = True
-            elif ret[1] == 'EmptyString':
-                cct.append(rst[1])
-                hasnulls[idx] = True
-            else:
-                print("col ", idx, " to string ", rs_row, " ", re_row)
-                raise ParseException(
-                    f"A:unable to concile types {rst[1]} and {ret[1]}")
-                cct.append(None)
-        else:
-            cct.append(expected_cols_type[idx])
-    return cct
-
-
-def check_schema_concile(cl1, cl2, hasnulls):
-    cl = []
-    for idx, (t1, t2) in enumerate(zip(cl1, cl2)):
-        if t1 == t2:
-            continue
-        if t1 is None and t2 is None:
-            continue
-        if t1 in ['int', 'float'] and t2 in ['int', 'float']:
-            continue
-        if t1 in ['datetime', 'DateInterval'] and t2 in ['datetime', 'DateInterval']:
-            continue
-        if 'EmptyString' in [t1, t2]:
-            hasnulls[idx] = True
-            continue
-        return False
-
-    return True
-
-
-def concile_schema_trivial(cl1, cl2, hasnulls):
-    cl = []
-    for idx, (t1, t2) in enumerate(zip(cl1, cl2)):
-        if t1 == t2:
-            cl.append(t1)
-            continue
-        if t1 is None or t2 is None:
-            cl.append(None)
-            continue
-        if t1 in ['int', 'float'] and t2 in ['int', 'float']:
-            cl.append('float')
-            continue
-        if t1 in ['datetime', 'DateInterval'] and t2 in ['datetime', 'DateInterval']:
-            cl.append('DateInterval')
-            continue
-
-        if 'EmptyString' in [t1, t2]:
-            if t1 == 'EmptyString':
-                cl.append(t2)
-            else:
-                cl.append(t1)
-            hasnulls[idx] = True
-            continue
-
-        raise ParseException(f"unable to concile types {t1} and {t2}")
-    return cl
-
 
 def get_csv_report(csvstore):
     '''
@@ -260,27 +184,168 @@ def get_csv_report(csvstore):
     header_lines = []
     re = next(reverse_inferer)
     expected_cols_type = re.cols_type
+    print("expected_cols_type = ", expected_cols_type)
     hasnulls = [False] * len(expected_cols_type)
+    ispkcandidate = [True] * len(expected_cols_type)
+
+    # =========================== func def ===========================
+
+    def concile_schema(expected_cols_type, rs_cols, rs_row, re_cols, re_row):
+        nonlocal hasnulls
+        nonlocal ispkcandidate
+        cct = []  # conciled column type
+        for idx, (ec, rs, re) in enumerate(zip(expected_cols_type, rs_cols, re_cols)):
+            if len(set([ec, rs, re])) != 1:  # TODO: change to match stmt
+                rst = strconv.convert(rs_row[idx], include_type=True)
+                ret = strconv.convert(re_row[idx], include_type=True)
+                match rst[1], ret[1]:
+                    case('int', 'float') | ('float', 'int'):
+                        cct.append('float')
+                    case('EmptyString', x) | (x, 'EmptyString'):
+                        hasnulls[idx] = True
+                        ispkcandidate[idx] = False
+                        cct.append(x)
+
+                    case('datetime', 'DateInterval') | ('DateInterval', 'datetime'):
+                        cct.append('DateInterval')
+
+                    case(None, x) | (x, None):
+                        cct.append(None)
+                    case _:
+                        raise ParseException(
+                            f"B:unable to concile types {rst[1]} and {ret[1]}")
+            else:
+                cct.append(ec)
+
+        return cct
+
+    # ============================ end def ===========================
+
+    # =========================== func def ===========================
+
+    def check_schema_concile(cl1, cl2):
+        nonlocal hasnulls
+        nonlocal ispkcandidate
+        cl = []
+        has_incompatible_types = False
+        for idx, (t1, t2) in enumerate(zip(cl1, cl2)):
+            match t1, t2:
+                case 'EmptyString', "EmptyString":
+                    cl.append(t1)
+                    hasnulls[idx] = True
+                    ispkcandidate[idx] = False
+                    # print("m4")
+                case('EmptyString', x) | (x, 'EmptyString'):
+                    hasnulls[idx] = True
+                    ispkcandidate[idx] = False
+                    cl.append(x)
+                    # print("m1")
+
+                case('datetime', 'DateInterval') | ('DateInterval', 'datetime'):
+                    cl.append('DateInterval')
+                case 'int', 'float' | 'float', 'int':
+                    cl.append('float')
+                case _:
+                    if t1 == t2:
+                        cl.append(t1)
+                    else:
+                        if None in [t1, t2]:
+                            return False
+                        else:
+                            has_incompatible_types = True
+
+        # header zones can have incomptible types: raise error or skip it.
+        if has_incompatible_types:
+            # raise ParseException(
+            # f"C:unable to concile types")
+            return False
+
+        return True
+    # ============================ end def ===========================
+
+    # =========================== func def ===========================
+    def concile_schema_trivial(cl1, cl2):
+        nonlocal hasnulls
+        nonlocal ispkcandidate
+        cl = []
+        for idx, (t1, t2) in enumerate(zip(cl1, cl2)):
+            #print(f"{idx} {t1} {t2}")
+            match t1, t2:
+                case 'EmptyString', "EmptyString":
+                    cl.append(t1)
+                    hasnulls[idx] = True
+                    ispkcandidate[idx] = False
+                    # print("m4")
+
+                case('EmptyString', x) | (x, 'EmptyString'):
+                    hasnulls[idx] = True
+                    ispkcandidate[idx] = False
+                    cl.append(x)
+                    # print("m1")
+
+                case('datetime', 'DateInterval') | ('DateInterval', 'datetime'):
+                    cl.append('DateInterval')
+                case(None, x) | (x, None):
+                    cl.append(None)
+                    # print("m2")
+                case _:
+                    if t1 == t2:
+                        cl.append(t1)
+                    else:
+                        raise ParseException(
+                            f"A:unable to concile types {t1} and {t2}")
+                    # print("m3")
+
+        return cl
+
+    # ================== end concile_schema_trivial ==================
+    validate_iter = validateschema_reader(
+        _rlr,  expected_cols_type, re.dialect)
     while True:
         if 'EmptyString' in expected_cols_type:
             try:
-                re = next(reverse_inferer)
-                expected_cols_type = concile_schema_trivial(
-                    expected_cols_type, re.cols_type, hasnulls)
-                print("ee : ", expected_cols_type)
+                re = next(validate_iter)
+                if re.cols_type != expected_cols_type:
+                    print("preconcie ", re.cols_type, " ", expected_cols_type)
+                    expected_cols_type = concile_schema_trivial(
+                        expected_cols_type, re.cols_type)
+                    print("postconcie ", re.cols_type, " ", expected_cols_type)
+                #print("ee : ", re.row, re.cols_type, expected_cols_type)
+                #print("ee : ", hasnulls, " ", ispkcandidate)
             except StopIteration:
-                # raise ParseException(
-                #    f"No suitable rows:  all rows have at least one empty column")
                 _rlr = reverse_reader(csvstore, encoding)
                 reverse_inferer = inferschema_reader(
                     _rlr)  # settle with empty string only
+                re = next(reverse_inferer)
+                # its EmptyString all the way up
+                expected_cols_type = re.cols_type
                 break
         else:
+            all_string_close_to_header = False
+            if len(set(expected_cols_type)) == 1:
+                # if we endup with only None and close to headers
+                if expected_cols_type[0] == None:
+                    num_remainder_lines = 0
+                    while True:
+                        try:
+                            re = next(validate_iter)
+                            num_remainder_lines += 1
+                        except StopIteration:
+                            break
+
+                    if num_remainder_lines < 10:
+                        all_string_close_to_header = True
+                        print("reverse scanner all string too close to header ")
+
             _rlr = reverse_reader(csvstore, encoding)
             reverse_inferer = inferschema_reader(_rlr)  # start scan all over
+            if all_string_close_to_header:
+                re = next(reverse_inferer)
+                expected_cols_type = re.cols_type
+
             break
 
-    #logger.info("last line", re.row, " ", re.cols_type)
+    # logger.info("last line", re.row, " ", re.cols_type)
 
     dialect = re.dialect
     # samples.append(re.row)
@@ -290,7 +355,9 @@ def get_csv_report(csvstore):
 
     forward_inferer = inferschema_reader(_flr, dialect)
     for rs in forward_inferer:
-        if check_schema_concile(rs.cols_type, expected_cols_type, hasnulls):
+        print("header block ", re.cols_type, rs.cols_type, " ",
+              expected_cols_type, " ", num_header_lines)
+        if check_schema_concile(rs.cols_type, expected_cols_type):
             samples.append(rs.row)
             header_zone = False
 
@@ -304,14 +371,17 @@ def get_csv_report(csvstore):
 
         num_header_lines = num_header_lines + 1
         header_lines.append(rs.row)
-        print("num_lines = ", num_header_lines)
+        # print("num_lines = ", num_header_lines)
     num_lines += num_header_lines
 
-    def validateschema(forward_linereader, reverse_linereader, expected_cols_type, hasnulls):
+    def validateschema(forward_linereader, reverse_linereader, expected_cols_type):
         '''
         '''
         nonlocal chars_read
         nonlocal num_lines
+        nonlocal hasnulls
+        nonlocal ispkcandidate
+
         rs = None
         re = None
         for rs, re in zip(validateschema_reader(forward_linereader,  expected_cols_type, dialect),
@@ -320,7 +390,7 @@ def get_csv_report(csvstore):
             chars_read += rs.chars
             chars_read += re.chars
             num_lines += 2
-            print("num_lines = ", num_lines)
+
             if len(expected_cols_type) != len(re.cols_type):
                 return [ValidateStatus.NumColumnFail, rs, re]
 
@@ -341,7 +411,7 @@ def get_csv_report(csvstore):
         return [ValidateStatus.ReachedEOF, rs, re]
 
     expected_cols_type = concile_schema_trivial(
-        rs.cols_type, expected_cols_type, hasnulls)
+        rs.cols_type, expected_cols_type)
 
     report_status = False
 
@@ -350,7 +420,8 @@ def get_csv_report(csvstore):
 
         if chars_read >= datastream_size:
             break
-        rr = validateschema(_flr, _rlr, expected_cols_type, hasnulls)
+        rr = validateschema(_flr, _rlr, expected_cols_type)
+        #print("num_lines = ", num_lines)
         parse_status, rs, re = rr
 
         if parse_status == ValidateStatus.ReachedEOF:
@@ -366,14 +437,20 @@ def get_csv_report(csvstore):
             break
 
         if parse_status == ValidateStatus.ColumnSchemaMismatch:
+            print("Scehma msimatch during validation",
+                  )
+            print("ex = ", rs.row, expected_cols_type)
+            print("rs = ", rs.row, " ", rs.cols_type)
+            print("re = ", re.row, " ", re.cols_type)
+
             expected_cols_type = concile_schema(
-                expected_cols_type, rs.cols_type, rs.row, re.cols_type, re.row, hasnulls)
+                expected_cols_type, rs.cols_type, rs.row, re.cols_type, re.row)
             report_status = True
 
         pass
     # =========================== end while ==========================
-    #sketches = {}
-    #sketch[col_pos] = sketch
+    # sketches = {}
+    # sketch[col_pos] = sketch
     # duplicate_cols = []
     # for col_pos in range(0,num_cols):
     #     if expected_cols_type[col_pos] == float:
@@ -390,14 +467,15 @@ def get_csv_report(csvstore):
     if report_status:
         cols_type = ['string' if _ is None else _ for _ in expected_cols_type]
         print("hasnulls = ", hasnulls)
+        print("ispkcandidate= ", ispkcandidate)
         if not header_candidates:
             header_candidates = [[f'col{_}' for _ in range(len(cols_type))]]
         delimiter_name = ""
-        if rs.dialect.delimiter == ",":
+        if re.dialect.delimiter == ",":
             delimiter_name = "comma"
-        if rs.dialect.delimiter == " ":
+        if re.dialect.delimiter == " ":
             delimiter_name = "space"
-        if rs.dialect.delimiter == "|":
+        if re.dialect.delimiter == "|":
             delimiter_name = "pipe"
 
         return CSV_Report(rs.dialect.delimiter, delimiter_name, num_header_lines, cols_type, rs.dialect, header_candidates, samples, header_lines, num_lines)
