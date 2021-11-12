@@ -41,6 +41,8 @@ class CSV_Report(NamedTuple):
     samples: Any
     header_lines: Any
     num_data_lines: Any
+    hasnulls: Any
+    ispkcandidate: Any
     pass
 
 
@@ -84,6 +86,7 @@ def inferschema_line(l, expected_cols_type=None, use_dialect=None):
     else:
         cols_type = [x[1]
                      for x in strconv.convert_series_with_type(row, include_type=True, types=expected_cols_type)]
+        #print(f"strconv-validation :{row[6]}: {cols_type[6]}")
 
     return ScannerReport(row, use_dialect, cols_type, len(l))
 # ['string' if _ is None else _ for _ in cols_type]
@@ -184,7 +187,7 @@ def get_csv_report(csvstore):
     header_lines = []
     re = next(reverse_inferer)
     expected_cols_type = re.cols_type
-    print("expected_cols_type = ", expected_cols_type)
+    #print("expected_cols_type = ", expected_cols_type)
     hasnulls = [False] * len(expected_cols_type)
     ispkcandidate = [True] * len(expected_cols_type)
 
@@ -196,10 +199,13 @@ def get_csv_report(csvstore):
         cct = []  # conciled column type
         for idx, (ec, rs, re) in enumerate(zip(expected_cols_type, rs_cols, re_cols)):
             if len(set([ec, rs, re])) != 1:  # TODO: change to match stmt
-                rst = strconv.convert(rs_row[idx], include_type=True)
-                ret = strconv.convert(re_row[idx], include_type=True)
+                rst = strconv.convert_with_type(
+                    rs_row[idx], include_type=True, ct=expected_cols_type[idx])
+                ret = strconv.convert_with_type(
+                    re_row[idx], include_type=True, ct=expected_cols_type[idx])
                 match rst[1], ret[1]:
                     case('int', 'float') | ('float', 'int'):
+                        ispkcandidate[idx] = False
                         cct.append('float')
                     case('EmptyString', x) | (x, 'EmptyString'):
                         hasnulls[idx] = True
@@ -213,7 +219,7 @@ def get_csv_report(csvstore):
                         cct.append(None)
                     case _:
                         raise ParseException(
-                            f"B:unable to concile types {rst[1]} and {ret[1]}")
+                            f"B:{idx}: :{rs_row[idx]}:{re_row[idx]}: unable to concile types {rst[1]} and {ret[1]}")
             else:
                 cct.append(ec)
 
@@ -242,8 +248,10 @@ def get_csv_report(csvstore):
                     # print("m1")
 
                 case('datetime', 'DateInterval') | ('DateInterval', 'datetime'):
+                    ispkcandidate[idx] = False
                     cl.append('DateInterval')
                 case 'int', 'float' | 'float', 'int':
+                    ispkcandidate[idx] = False
                     cl.append('float')
                 case _:
                     if t1 == t2:
@@ -284,6 +292,7 @@ def get_csv_report(csvstore):
                     # print("m1")
 
                 case('datetime', 'DateInterval') | ('DateInterval', 'datetime'):
+                    ispkcandidate[idx] = False
                     cl.append('DateInterval')
                 case(None, x) | (x, None):
                     cl.append(None)
@@ -306,10 +315,10 @@ def get_csv_report(csvstore):
             try:
                 re = next(validate_iter)
                 if re.cols_type != expected_cols_type:
-                    print("preconcie ", re.cols_type, " ", expected_cols_type)
+                    #print("preconcie ", re.cols_type, " ", expected_cols_type)
                     expected_cols_type = concile_schema_trivial(
                         expected_cols_type, re.cols_type)
-                    print("postconcie ", re.cols_type, " ", expected_cols_type)
+                    #print("postconcie ", re.cols_type, " ", expected_cols_type)
                 #print("ee : ", re.row, re.cols_type, expected_cols_type)
                 #print("ee : ", hasnulls, " ", ispkcandidate)
             except StopIteration:
@@ -355,8 +364,8 @@ def get_csv_report(csvstore):
 
     forward_inferer = inferschema_reader(_flr, dialect)
     for rs in forward_inferer:
-        print("header block ", re.cols_type, rs.cols_type, " ",
-              expected_cols_type, " ", num_header_lines)
+        # print("header block ", re.cols_type, rs.cols_type, " ",
+        #       expected_cols_type, " ", num_header_lines)
         if check_schema_concile(rs.cols_type, expected_cols_type):
             samples.append(rs.row)
             header_zone = False
@@ -437,12 +446,6 @@ def get_csv_report(csvstore):
             break
 
         if parse_status == ValidateStatus.ColumnSchemaMismatch:
-            print("Scehma msimatch during validation",
-                  )
-            print("ex = ", rs.row, expected_cols_type)
-            print("rs = ", rs.row, " ", rs.cols_type)
-            print("re = ", re.row, " ", re.cols_type)
-
             expected_cols_type = concile_schema(
                 expected_cols_type, rs.cols_type, rs.row, re.cols_type, re.row)
             report_status = True
@@ -466,8 +469,8 @@ def get_csv_report(csvstore):
 
     if report_status:
         cols_type = ['string' if _ is None else _ for _ in expected_cols_type]
-        print("hasnulls = ", hasnulls)
-        print("ispkcandidate= ", ispkcandidate)
+        #print("hasnulls = ", hasnulls)
+        #print("ispkcandidate= ", ispkcandidate)
         if not header_candidates:
             header_candidates = [[f'col{_}' for _ in range(len(cols_type))]]
         delimiter_name = ""
@@ -478,7 +481,7 @@ def get_csv_report(csvstore):
         if re.dialect.delimiter == "|":
             delimiter_name = "pipe"
 
-        return CSV_Report(rs.dialect.delimiter, delimiter_name, num_header_lines, cols_type, rs.dialect, header_candidates, samples, header_lines, num_lines)
+        return CSV_Report(rs.dialect.delimiter, delimiter_name, num_header_lines, cols_type, rs.dialect, header_candidates, samples, header_lines, num_lines, hasnulls, ispkcandidate)
     raise ParseException("Mismatch in number of columns")
 
 
