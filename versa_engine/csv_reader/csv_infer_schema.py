@@ -41,8 +41,8 @@ class CSV_Report(NamedTuple):
     samples: Any
     header_lines: Any
     num_data_lines: Any
-    hasnulls: Any
-    ispkcandidate: Any
+    has_nulls: Any
+    is_pkcandidate: Any
     pass
 
 
@@ -481,6 +481,9 @@ def get_csv_report(csvstore):
         if re.dialect.delimiter == "|":
             delimiter_name = "pipe"
 
+        for idx, ctype in enumerate(cols_type):
+            if ctype == 'float':
+                ispkcandidate[idx] = False
         return CSV_Report(rs.dialect.delimiter, delimiter_name, num_header_lines, cols_type, rs.dialect, header_candidates, samples, header_lines, num_lines, hasnulls, ispkcandidate)
     raise ParseException("Mismatch in number of columns")
 
