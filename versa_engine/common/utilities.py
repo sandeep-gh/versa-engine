@@ -9,7 +9,6 @@ import importlib
 import collections
 import getpass
 import tempfile
-import rpyc
 from multiprocessing.connection import Listener
 from multiprocessing.connection import Client
 from urllib.parse import urlparse
@@ -35,7 +34,6 @@ def get_last_file_by_pattern(pattern=None, wdir='./'):
     if files:
         files.sort(key=os.path.getmtime)
         return files[-1][len(wdir):]
-
 
     #     import importlib.util
     #     spec = importlib.util.spec_from_file_location(module_name, f'{module_dir}/{module_name}.py')
@@ -117,11 +115,10 @@ def wait_for_file(fn, msg, wait_time=5):
 
 
 def get_listener(port):
-    print ("get listener = ", gethostname())
+    print("get listener = ", gethostname())
     address = (gethostname(), port)     # family is deduced to be 'AF_INET'
     listener = Listener(address, authkey=b'secret password')
     return listener
-
 
     print("get listener = ", gethostname())
 # def signal_listen(port):
@@ -134,7 +131,7 @@ def get_listener(port):
 
 
 def signal_send(host, port, msg='database loaded'):
-    print ("signal_send ", host)
+    print("signal_send ", host)
     address = (host, port)     # family is deduced to be 'AF_INET'
     conn = Client(address, authkey=b'secret password')
     conn.send(msg)
@@ -152,6 +149,7 @@ def count_iterable(i):
 #    system_config_xml_fn = module_dir + '/haswell_system_config.xml'
 # if os.path.isfile(config_dir+ '/dicex_shadowfax.sh'):
 #    system_config_xml_fn = module_dir + '/shadowfax_system_config.xml'
+
 
 # TODO: how does system_config.xml gets build on new system
 system_config_root = xu.read_file("/home/kabira/.versa/" + 'system_config.xml')
@@ -254,9 +252,9 @@ def run_once(f):
     return wrapper
 
 
-
 def is_url(url):
     return urlparse(url).scheme in ("http", "https")
+
 
 def download_url(url, save_dir=".", char_limit=13):
     filename = None

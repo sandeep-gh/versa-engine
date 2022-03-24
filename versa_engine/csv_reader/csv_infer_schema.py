@@ -6,7 +6,7 @@ from enum import Enum, auto
 from xml.dom import minidom
 from string import Template
 import csv
-import strconv
+from strconv import strconv
 from charset_normalizer import from_bytes, from_path
 from file_read_backwards import FileReadBackwards
 from io import BytesIO, TextIOWrapper
