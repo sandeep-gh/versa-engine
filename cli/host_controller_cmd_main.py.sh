@@ -1,32 +1,41 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-#TODOs: multiple file arguments
+# TODOs: multiple file arguments
+#import versa_engine.controller.host_controller as cntrl
 import argparse
-from versa_engine.jobmanagers.jobmanager import get_jobmanager
-import versa_engine.controller.host_controller as cntrl
+import versa_engine as ve
+
+cntrl = ve.controller.host_controller
+#from versa_engine.jobmanagers.jobmanager import get_jobmanager
 
 parser = argparse.ArgumentParser()
 
 
 parser.add_argument("--dbsession", help="the dbsession description", nargs=1)
 parser.add_argument("--run_dir", help="the dbsession description", nargs=1)
-parser.add_argument("--host_type", help="default is dedicated; largemem for 512GB smp machines", nargs='?')
+parser.add_argument(
+    "--host_type", help="default is dedicated; largemem for 512GB smp machines", nargs='?')
 ###########################################################
-##DB image save and resume
+# DB image save and resume
 ###########################################################
-parser.add_argument("--savedb", help="save the database session", action='store_true')
-parser.add_argument("--restoredb",help="restore the database session", action='store_true')
-parser.add_argument("--shared_buffer_size",help="size of the shared buffer, e.g., 8GB")
-parser.add_argument("--max_wal_size",help="size of dirty pages, e.g., 8GB")
-parser.add_argument("--checkpoint_timeout",help="checkpoint timeout e.g., 30min")
-parser.add_argument("--maintenance_work_mem",help="maintenance_work_mem, default 10GB")
-parser.add_argument("--work_mem",help="work_mem, default 2GB")
-parser.add_argument("--effective_cache_size",help="effective_cache_size 10GB")
-parser.add_argument("--max_connections",help="max_connections, default 5")
-parser.add_argument("--jobmanager", help="what kind of setup is the app running on ",  default="localhost")
-parser.add_argument("--run_mode",help="run mode: optimized or default")
-parser.add_argument("--log_statement",help="none, ddl, mod, all")
-
+parser.add_argument(
+    "--savedb", help="save the database session", action='store_true')
+parser.add_argument(
+    "--restoredb", help="restore the database session", action='store_true')
+parser.add_argument("--shared_buffer_size",
+                    help="size of the shared buffer, e.g., 8GB")
+parser.add_argument("--max_wal_size", help="size of dirty pages, e.g., 8GB")
+parser.add_argument("--checkpoint_timeout",
+                    help="checkpoint timeout e.g., 30min")
+parser.add_argument("--maintenance_work_mem",
+                    help="maintenance_work_mem, default 10GB")
+parser.add_argument("--work_mem", help="work_mem, default 2GB")
+parser.add_argument("--effective_cache_size", help="effective_cache_size 10GB")
+parser.add_argument("--max_connections", help="max_connections, default 5")
+parser.add_argument(
+    "--jobmanager", help="what kind of setup is the app running on ",  default="localhost")
+parser.add_argument("--run_mode", help="run mode: optimized or default")
+parser.add_argument("--log_statement", help="none, ddl, mod, all")
 
 
 ###########################################################
@@ -44,10 +53,11 @@ parser.add_argument("--pingdb",help='check if database is running', action='stor
 
 
 args = parser.parse_args()
+#TODO: we should be able to pick up dbsession automatically
 dbsession_dbdesc = args.dbsession[0]
 host_type='standard'
 log_statement='none'
-jobmanager = get_jobmanager() #TODO:user input from frontend or from config needs to reach here
+jobmanager = ve.get_jobmanager() #TODO:user input from frontend or from config needs to reach here
 if args.host_type:
     host_type = args.host_type
 db_cfg_param_val_dict = dict()

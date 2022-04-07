@@ -1,13 +1,13 @@
 #from utilities import system_config_root
-#'''
-#Interface to job execution on local machine via shell
-#'''
+# '''
+# Interface to job execution on local machine via shell
+# '''
 
 jobmanager_dir = os.path.dirname(os.path.realpath(__file__))
 
-def get_job_submission_args(host_type='standard')::
-    return None
 
+def get_job_submission_args(host_type='standard'):
+    return None
 
 
 def get_pgsa_launch_template():

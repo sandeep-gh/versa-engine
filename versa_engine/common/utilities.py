@@ -16,6 +16,7 @@ import requests
 from hashlib import sha256
 
 from versa_engine.common import xmlutils as xu
+import importlib.util
 module_dir = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -35,18 +36,14 @@ def get_last_file_by_pattern(pattern=None, wdir='./'):
         files.sort(key=os.path.getmtime)
         return files[-1][len(wdir):]
 
-    #     import importlib.util
-    #     spec = importlib.util.spec_from_file_location(module_name, f'{module_dir}/{module_name}.py')
+
+def import_module(module_dir="./", module_name=None):
+
     spec = importlib.util.spec_from_file_location(
         module_name, f'{module_dir}/{module_name}.py')
-    #     foo = importlib.util.module_from_spec(spec)
-    #     spec.loader.exec_module(foo)
+    foo = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(foo)
     return foo
-    # except Exception as e:
-    #     print ("pwd ", os.getcwd())
-    #     print("import error:" + module_name + " with error " + str(e))
-    #     foo = None
-    # return foo
 
 
 def get_attr_value_from_module(module_dir, module_name, module_attr):
@@ -145,7 +142,7 @@ def count_iterable(i):
 #system_config_xml_fn = None
 #import os.path
 #from  system_config import config_dir
-    print("signal_send ", host)
+
 #    system_config_xml_fn = module_dir + '/haswell_system_config.xml'
 # if os.path.isfile(config_dir+ '/dicex_shadowfax.sh'):
 #    system_config_xml_fn = module_dir + '/shadowfax_system_config.xml'

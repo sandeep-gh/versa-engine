@@ -8,6 +8,7 @@ import os
 from typing import NamedTuple, Any
 import rpyc
 import time
+import subprocess
 
 from versa_engine.common import utilities
 from versa_engine.common import xmlutils as xu
@@ -26,10 +27,10 @@ class ProxyConnectionCtx(NamedTuple):
 
 
 def launchdbjob(**kwargs):
-    jobmanager_type = kwargs.get("jobmanager_type")
-    jobmanager = get_jobmanager(jobmanager_typee)
+    jobmanager_type = kwargs.pop("jobmanager_type", "localhost")
+    jobmanager = get_jobmanager(jobmanager_type)
 
-    return jobmanager.launchdbjob(kwargs)
+    return jobmanager.launchdbjob(**kwargs)
 
 # def launchdbjob(dbdesc=None, dbport=None, save_on_exit_val="no", postjob_cleanup=False, host_type='standard', log_statement='all', run_mode='default', walltime_hours=1, run_dir="./", jobmanager=None):
 #     '''
@@ -103,7 +104,6 @@ def launchdbjob(**kwargs):
 #     db_launch_msg = utilities.signal_listen(message_port_listener)
 
 
-    
 #     # launch job for cleaning
 #     # if postjob_cleanup:
 #     #     #what is the jobid
@@ -135,11 +135,11 @@ def launchdbjob(**kwargs):
 #                 time.sleep(2)
 #                 try:
 #                     conn = rpyc.connect("localhost", frontend_proxy_port) #could not be a localhost to
-#                 except Exception as e: 
+#                 except Exception as e:
 #                     pass
 #                 if conn is not None:
 #                     break
-            
+
 #             return conn
 
 #         frontend_proxy_port = utilities.get_new_port(port_server_ip=port_server_ip)

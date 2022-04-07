@@ -1,10 +1,13 @@
 from versa_engine.common import xmlutils as xu
-from versa_engine.dl import dl
-#element,
+#from versa_engine.dl import dl
+# element,
+
+
 def read_metadata(metadata_fn):
     if xu.check_if_xml_tree(metadata_fn):
         return metadata_fn
 
+    #TODO: use of new dl library
     if metadata_fn[0:5] == "dl://":
         #read metadata from dl
         mdxml = dl.get_page_text(metadata_fn[5:])

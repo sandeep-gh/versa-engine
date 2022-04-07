@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
+# from jobmanagers import get_jobmanager
+# import rmo.versa_impl as vi
+# import rmo.utils as vu
 import argparse
 import os
 import sys
 from datetime import datetime
 
-import common.metadata_utils as mu
-import common.utilities as utilities
-import controller.frontend_controller as cntrl
-import edi.dicex_edi_impl as dei
+import versa_engine as ve
+mu = ve.metadata_utils
+edi = ve.edi.dicex_edi_impl
+vu = ve.rmo.utils
+vi = ve.rmo.versa_impl
 
-import rmo.utils as vu
-import rmo.versa_impl as vi
-from jobmanagers import get_jobmanager
+# from versa_engine import metadata_utils as mu, dicex_edi_impl as dei, rmo.utils as vu, rmo.versa_impl as vi
+# import common.metadata_utils as mu
+# import common.utilities as utilities
+# import controller.frontend_controller as cntrl
+# import edi.dicex_edi_impl as dei
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--port", help="specify port number",
@@ -34,7 +41,7 @@ parser.add_argument("--log_statement", help="none, ddl, mod, all")
 
 parser.add_argument("--build_rmo_file", nargs=2,
                     help="takes two arguments; the location of the metadata and the data. ")
-#parser.add_argument("--build_orm", nargs=2, help="build an orm model") 
+#parser.add_argument("--build_orm", nargs=2, help="build an orm model")
 parser.add_argument("--data_config", nargs=1,
                     help="external data configuration file")
 #parser.add_argument("--load_", action='store_true', help="build orms for all tables and files in edcfg")
@@ -83,7 +90,10 @@ assert session_name is not None
 
 
 if args.remove:
-    dpi.removejob(session_name)
+    #TODO: removejob
+    # need removejob is jobmanager; for now use localhostjobmanagers
+    # dpi.removejob(session_name)
+    
     sys.exit()
 
 if args.walltime_hours:
@@ -148,10 +158,10 @@ if args.build_rmo:  # build rmo wrapper for the metadata
 if args.build_rmo_file:
     vi.wrap_file(session_name, args.wrap_file[0], args.wrap_file[1])
 
-work_dir="./"
+work_dir = "./"
 if args.work_dir:
-    work_dir=args.work_dir
-    
+    work_dir = args.work_dir
+
 edcfg_xml = None
 if args.data_config:
     edcfg_xml = args.data_config[0]
@@ -160,11 +170,11 @@ if args.data_config:
 
     # currently automatically copying local data from remote source is turned off
     vi.build_orm_oracle_tables(
-        edcfg_xml, make_local_copy=make_local_copy, force_create_model=force_create_model) #fix work dir here
+        edcfg_xml, make_local_copy=make_local_copy, force_create_model=force_create_model)  # fix work dir here
 
     # TODO: we need to fix this
     vi.build_orm_pg_tables(
-        edcfg_xml, force_create_model=force_create_model, make_local_copy=make_local_copy) #fix work dir here
+        edcfg_xml, force_create_model=force_create_model, make_local_copy=make_local_copy)  # fix work dir here
 
     # vi.build_orm_gp_pipeline(edcfg_xml)
 # TODO: how do we deal with make_local_copy and  only_rmo

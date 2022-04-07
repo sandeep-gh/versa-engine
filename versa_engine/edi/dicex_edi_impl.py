@@ -6,13 +6,14 @@ from string import Template
 
 #from utils import timing
 
-import common.xmlutils as xu
-import common.metadata_utils as mu
-import controller.pgsa_utils as pgu
-import edi.edi_config_utils as ecu
-import edi.load_file_impl as lfi
-import edi.build_csv_metadata as bcm
-import common.utilities as utilities
+from ..common import xmlutils as xu
+from ..common import metadata_utils as mu
+from ..common import utilities
+from ..controller import pgsa_utils as pgu
+from . import edi_config_utils as ecu
+from . import load_file_impl as lfi
+from . import build_csv_metadata as bcm
+
 module_dir = os.path.dirname(os.path.realpath(__file__))
 user = getpass.getuser()
 port = None
@@ -261,10 +262,10 @@ def load_csv_file(metadata_xml, locations, wd="./", dbport=None, pgdb='postgres'
     for location in locations:
         if utilities.is_url(location):
             lfi.ingest_from_url(metadata_root,  cursor, location,  wd, dbport, pgdb,
-                             schema=schema, strict_formatted=strict_formatted, delimiter=delimiter, has_header=has_header, crop_head=crop_head)
+                                schema=schema, strict_formatted=strict_formatted, delimiter=delimiter, has_header=has_header, crop_head=crop_head)
         else:
             lfi.ingest_from_file(metadata_root,  cursor, os.path.dirname(location), os.path.basename(location), wd, dbport, pgdb,
-                             schema=schema, strict_formatted=strict_formatted, delimiter=delimiter, has_header=has_header, crop_head=crop_head)
+                                 schema=schema, strict_formatted=strict_formatted, delimiter=delimiter, has_header=has_header, crop_head=crop_head)
     conn.commit()
 
 
@@ -368,7 +369,7 @@ def load_files(cfg_xml, pgdb=None):
         return
 
     for fe in all_files:
-        print ("fe = ", fe)
+        print("fe = ", fe)
         metadata = fe['metadata']
         location = fe['location']
         model_name = fe.get('model_name')
@@ -377,8 +378,8 @@ def load_files(cfg_xml, pgdb=None):
         strict_formatted = fe.get('strict_formatted')
         has_header = fe.get('has_header')
         crop_head = fe.get('crop_head')
-        print ("crop head = ", crop_head)
-        
+        print("crop head = ", crop_head)
+
         if schema is None:
             schema = 'public'
         metadata_root = mu.read_metadata(metadata)
@@ -406,4 +407,3 @@ def close_session():
 # init_connection("mydb")
 # load_oracle_tables("ed.xml")
 # load_files("ed.xml")
- 

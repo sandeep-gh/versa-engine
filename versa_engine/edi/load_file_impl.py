@@ -2,10 +2,10 @@
 import os
 import subprocess
 from string import Template
-import common.utilities as utilities
-import common.metadata_utils as mu
+from ..common import utilities
+from ..common import metadata_utils as mu
 #from osgeo import ogr
-from controller.appconfig import AppConfig
+from ..controller.appconfig import AppConfig
 import shutil
 
 
@@ -95,13 +95,17 @@ def create_table_from_metadata(metadata_root, wd=None, port=None, pgdb='postgres
     #subprocess.call(create_clone_pg_tbl_str, shell=True)
     # print create_clone_pg_tbl_str
 
+
 def ingest_from_url(metadata_cfg, cursor, url, work_dir, port, pgdb='postgres', schema='public', delimiter=None, strict_formatted=False, has_header=False, crop_head=None):
     filepath = utilities.download_url(url, save_dir=work_dir)
     filename = os.path.basename(filepath)
-    print ("filename = ", filename)
-    ingest_from_file(metadata_cfg, cursor, work_dir, filename, work_dir=work_dir, port=port, pgdb=pgdb, schema=schema, delimiter=delimiter, strict_formatted=strict_formatted, has_header=has_header, crop_head=crop_head)
-    
+    print("filename = ", filename)
+    ingest_from_file(metadata_cfg, cursor, work_dir, filename, work_dir=work_dir, port=port, pgdb=pgdb, schema=schema,
+                     delimiter=delimiter, strict_formatted=strict_formatted, has_header=has_header, crop_head=crop_head)
+
     pass
+
+
 def ingest_from_file(metadata_cfg=None, cursor=None, ddir=None, fn=None, work_dir=None, port=None, pgdb='postgres', schema='public', delimiter=None, strict_formatted=False, has_header=False, crop_head=None):
 
     assert work_dir is not None
@@ -244,7 +248,7 @@ def load_shape_data_from_file(port, rasterFile, model_name=None):
 
     keep_insert_cmd = "grep  \"INSERT\" "
     setenv_path = AppConfig.get_setevn_path()
-    
+
     subprocess.call('''. ${setenv_path}; shp2pgsql -W 'latin1' -I  '''+rasterFile+"|" + keep_insert_cmd +
                     "|" + rename_cmd + "|" + ''' psql -p '''+str(port)+''' postgres''', shell=True)
     #subprocess.call('''shp2pgsql -W 'latin1' -I  '''+rasterFile+"|"+ rename_cmd+ "> out", shell=True)

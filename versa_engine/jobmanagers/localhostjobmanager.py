@@ -1,13 +1,31 @@
-#from utilities import system_config_root
-from string import Template
-import subprocess
+#from utilities  import system_config_root
+import getpass
 import os
+import subprocess
+import tempfile
+
+import time
 from multiprocessing import Process
-import versa_engine.controller.pgsa_utils as pgu
+from typing import NamedTuple, Any
+from string import Template
+import rpyc
+#import versa_engine.controller.pgsa_utils as pgu
+
+#from versa_engine.controller.appconfig import AppConfig
+#from versa_engine.controller.sessionLauncherService import rpyc
+import versa_engine as ve
+
+
+class ProxyConnectionCtx(NamedTuple):
+    proxy_port: Any
+    dbport: Any
+    conn: Any
+    pass
+
+
 # '''
 # Interface to job execution via qsub
 # '''
-
 jobmanager_dir = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -48,17 +66,13 @@ def launch_cleanup_job(pid, pgsa_cleanup_script_fn):
 
 
 def removejob(dbdesc):
-    set_dbdesc(dbdesc)
-    exec_remote_cmd(dbdesc, "cleandb")
-    jobid = pgu.get_jobid(dbdesc)
-    if jobid is not None:
-        subprocess.call("qdel "+jobid, shell=True)
-    else:
-        print("Error in remove job")
+    """Absolutely no idea whats going on here
+    """
+    pass
 
 
 def get_jobid(dbdesc):
-    return pgu.get_pgpid(dbdesc)
+    return ve.pgu.get_pgpid(dbdesc)
 
 
 def transfer_file(source_host, source_dir, source_fn, target_host, target_dir, target_fn):
@@ -78,12 +92,16 @@ def get_launch_frontend_proxy_template():
     return template
 
 
+desc_template = Template("pgsa_${timestamp}")
+dbuser = getpass.getuser()  # the db user is same as logined user
+
+
 def launchdbjob(dbdesc=None, dbport=None, save_on_exit_val="no", postjob_cleanup=False, host_type='standard', log_statement='all', run_mode='default', walltime_hours=1, run_dir="./", jobmanager=None):
     '''
     postjob_cleanup : add anthor job dependent on this to perform cleanup
     '''
     if (dbdesc == None) or (dbdesc == "undef"):
-        timestamp = pgu.get_timestamp()
+        timestamp = ve.pgu.get_timestamp()
         dbdesc = desc_template.substitute(locals())
     # set_dbdesc(dbdesc)
     work_dir = tempfile.mkdtemp()
@@ -96,7 +114,7 @@ def launchdbjob(dbdesc=None, dbport=None, save_on_exit_val="no", postjob_cleanup
     except Exception as e:
         print("got exception ", str(e))
     closedb_flag_fn = work_dir.strip() + "/" + dbdesc
-    port_server_ip = AppConfig.get_port_server_ip()
+    port_server_ip = ve.AppConfig.get_port_server_ip()
     ######################################################
     # server_port: 1.Use specified port,
     #              2. Use the one specified in dbsession
@@ -104,21 +122,21 @@ def launchdbjob(dbdesc=None, dbport=None, save_on_exit_val="no", postjob_cleanup
     #
     ########################################################
     if dbport is None:
-        dbport = utilities.get_new_port(port_server_ip=port_server_ip)
+        dbport = ve.utilities.get_new_port(port_server_ip=port_server_ip)
 
-    db_data_home = pgu.get_db_data_home(
+    db_data_home = ve.pgu.get_db_data_home(
         dbdesc=dbdesc, user=dbuser, port=dbport, wdir=work_dir)
 
     # TODO: use path based on pgversion
 
-    cluster_name = AppConfig.get_cluster_name()
-    pybin_path = AppConfig.get_pybin_path()
+    cluster_name = ve.AppConfig.get_cluster_name()
+    pybin_path = ve.AppConfig.get_pybin_path()
     start_cmd = Template(
         "--dbsession ${dbdesc} --run_mode ${run_mode} --host_type ${host_type} --log_statement ${log_statement} --run_dir ${run_dir}  --startdb ").substitute(locals())
     ping_cmd = Template(
         "--dbsession ${dbdesc} --pingdb --iambash").substitute(locals())
-    message_port = int(utilities.get_new_port(port_server_ip))
-    hostname = utilities.gethostname()
+    message_port = int(ve.utilities.get_new_port(port_server_ip))
+    hostname = ve.utilities.gethostname()
     assert 'dicex_basedir' in os.environ
     dicex_basedir = os.environ['dicex_basedir']
     # TODO: setenv_path  variable is hardwired --> they need to come from somewhere
@@ -143,15 +161,15 @@ def launchdbjob(dbdesc=None, dbport=None, save_on_exit_val="no", postjob_cleanup
 
     launch_job(pgsa_job_fn)  # launch job asynchronously/background
     print("waiting for database to start...")
-    message_port_listener = utilities.get_listener(message_port)
-    db_launch_msg = utilities.signal_listen(message_port_listener)
+    message_port_listener = ve.utilities.get_listener(message_port)
+    db_launch_msg = ve.utilities.signal_listen(message_port_listener)
 
     if db_launch_msg[0] == "database started":
         print("database session successfully  started on host " +
-              pgu.get_db_host(dbdesc, wdir=run_dir))
+              ve.pgu.get_db_host(dbdesc, wdir=run_dir))
 
         def launch_frontend_proxy(jobmanager, run_dir=run_dir, dicex_basedir=dicex_basedir, frontend_proxy_port=None):
-            pybin_path = AppConfig.get_pybin_path()
+            pybin_path = ve.AppConfig.get_pybin_path()
             joblaunch_str = get_launch_frontend_proxy_template().safe_substitute(locals())
             job_fn = work_dir+"/frontendproxy.job"
             job_fh = open(job_fn, 'w+')
@@ -171,7 +189,7 @@ def launchdbjob(dbdesc=None, dbport=None, save_on_exit_val="no", postjob_cleanup
 
             return conn
 
-        frontend_proxy_port = utilities.get_new_port(
+        frontend_proxy_port = ve.utilities.get_new_port(
             port_server_ip=port_server_ip)
         conn = launch_frontend_proxy(
             jobmanager, frontend_proxy_port=frontend_proxy_port)

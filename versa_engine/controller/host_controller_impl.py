@@ -18,7 +18,7 @@ def initdb(db_data_home, port, allow_connections_from_subnet='True', db_cfg_para
     initdb_cmd_str = Template(
         "mkdir ${db_data_home};. ${setenv_path}; initdb -E UTF8 -D ${db_data_home}/data").substitute(a)
 
-    print ("initdb ", initdb_cmd_str)
+    print("initdb ", initdb_cmd_str)
     subprocess.call(initdb_cmd_str, shell=True)
     if allow_connections_from_subnet:
         subprocess.call(Template(
@@ -45,6 +45,7 @@ def pingdb(dbdesc=None, iambash=False):
     except:
         dbstatus = 0  # need a noop here or better programming practice
     # how the result needs to be outputted
+    print("pingdb res = ", dbstatus)
     if iambash:
         print(dbstatus)
     else:
@@ -67,7 +68,7 @@ def startdb(db_data_home, port=None, db_cfg_param_val_dict=None, log_statement='
     if db_cfg_param_val_dict is not None:
         default_db_cfg_param_val_dict.update(db_cfg_param_val_dict)
 
-    print ("cfg param = ", default_db_cfg_param_val_dict)
+    print("cfg param = ", default_db_cfg_param_val_dict)
     setenv_path = AppConfig.get_setevn_path()
     start_cmd_template = Template(". ${setenv_path}; pg_ctl -o \" -F -p ${port} -c log_connections=True -c log_disconnections=True -c fsync=off -c shared_buffers=${shared_buffers} -c maintenance_work_mem=${maintenance_work_mem} -c work_mem=${work_mem} -c effective_cache_size=${effective_cache_size}  -c bgwriter_delay=10000ms -c wal_writer_delay=10000ms -c max_wal_size=${max_wal_size} -c checkpoint_timeout=${checkpoint_timeout} -c full_page_writes=off -c synchronous_commit=off -c log_statement=${log_statement} -c max_connections=${max_connections}\" -D ${db_data_home}/data -l ${db_data_home}/logfile -w start")
 

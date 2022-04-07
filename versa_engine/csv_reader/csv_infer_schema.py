@@ -6,7 +6,8 @@ from enum import Enum, auto
 from xml.dom import minidom
 from string import Template
 import csv
-from strconv import strconv
+#from strconv import strconv
+import strconv
 from charset_normalizer import from_bytes, from_path
 from file_read_backwards import FileReadBackwards
 from io import BytesIO, TextIOWrapper
@@ -526,4 +527,40 @@ def build_csv_metadata(model_name=None,  csv_metadata=None):
     #         file_path) + "/" + model_name + '.md'
     # with open(metadata_path, 'w+') as md_fh:
     #     md_fh.write(md_str)
+    return md_str
+
+
+def build_csv_metadata_v2(model_name, delimiter, delimiter_name, is_pk, has_null, cols_name, cols_type):
+    '''
+
+    '''
+    assert delimiter_name != ''
+    cols_md_str = ''
+    for i, col_name in enumerate(cols_name):
+
+        if_null_stmt = ''
+        if has_null[i] == True:
+            if_null_stmt = """ has_null='True'"""
+
+        cols_md_str += f"<column{if_null_stmt}><name>{col_name}</name><type>{cols_type[i]}</type></column>\n"
+        # cols_md_str += Template(
+        #     '<column${if_null_stmt}><name>${col_name}</name><type>$f_type</type></column>\n').substitute(locals())
+
+    primary_key_cols = [_[0] for _ in zip(
+        cols_name,  is_pk) if _[1]]
+
+    primary_key_str = ""
+    for pkey in primary_key_cols:
+        primary_key_str += f'<key>{pkey}</key>\n'
+
+    md_prefix = f"<metadata>\n<model>{model_name}</model>\n<delimiter>{delimiter_name}</delimiter>\n<columns>\n"
+    #md_prefix = f"<metadata>\n<model>{model_name}</model>\n<delimiter>${delimiter_name}</delimiter>\n<columns>\n"
+
+    #md_postfix = "</columns>\n<primarykey>\n${primary_key_str}\n</primarykey>\n</metadata>"
+    md_postfix = f"</columns>\n<primarykey>\n{primary_key_str}\n</primarykey>\n</metadata>"
+    _ = md_prefix + cols_md_str + md_postfix
+    # escape ampersend if any -- should be replaced much earlier
+    _ = _.replace('&', '&amp;')
+    md_str = minidom.parseString(_).toprettyxml()
+    md_str = re.sub(r'\n+', '\n', md_str).strip()
     return md_str
