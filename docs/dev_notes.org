@@ -21,3 +21,18 @@ ImportError: /home/kabira/Builds/python3.10/lib/python3.10/site-packages/scipy/s
 ** unable to create run_dir in specific location (non /tmp) location
 
 ** what if frontendproxy fails to start
+
+* CSV reader notes
+*
+https://medium.com/code-kings/python3-fix-unicodedecodeerror-utf-8-codec-can-t-decode-byte-in-position-be6c2e2235ee
+
+import codecs
+BLOCKSIZE = 1048576 # or some other, desired size in bytes
+with codecs.open(sourceFileName, "r", "your-source-encoding") as sourceFile:
+    with codecs.open(targetFileName, "w", "utf-8") as targetFile:
+        while True:
+            contents = sourceFile.read(BLOCKSIZE)
+            if not contents:
+                break
+            targetFile.write(contents)
+            

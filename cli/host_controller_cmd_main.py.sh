@@ -39,31 +39,34 @@ parser.add_argument("--log_statement", help="none, ddl, mod, all")
 
 
 ###########################################################
-##manage supporting script
+# manage supporting script
 ###########################################################
-parser.add_argument("--restartdb", action='store_true', help="restart a stopped database")
-parser.add_argument("--iambash", action='store_true', help="this call is from bash script")
+parser.add_argument("--restartdb", action='store_true',
+                    help="restart a stopped database")
+parser.add_argument("--iambash", action='store_true',
+                    help="this call is from bash script")
 parser.add_argument("--stopdb", action='store_true', help="stop database")
 #parser.add_argument("--closedb", help="raise flag to close the database session", action='store_true' )
 parser.add_argument("--startdb", help="init database", action='store_true')
-parser.add_argument("--cleandb",help='stop and delete data files', action='store_true')
-parser.add_argument("--pingdb",help='check if database is running', action='store_true')
-
-
+parser.add_argument(
+    "--cleandb", help='stop and delete data files', action='store_true')
+parser.add_argument(
+    "--pingdb", help='check if database is running', action='store_true')
 
 
 args = parser.parse_args()
-#TODO: we should be able to pick up dbsession automatically
+# TODO: we should be able to pick up dbsession automatically
 dbsession_dbdesc = args.dbsession[0]
-host_type='standard'
-log_statement='none'
-jobmanager = ve.get_jobmanager() #TODO:user input from frontend or from config needs to reach here
+host_type = 'standard'
+log_statement = 'none'
+# TODO:user input from frontend or from config needs to reach here
+jobmanager = ve.get_jobmanager()
 if args.host_type:
     host_type = args.host_type
 db_cfg_param_val_dict = dict()
 if args.shared_buffer_size:
     db_cfg_param_val_dict['shared_buffers'] = args.shared_buffer_size
-    
+
 if args.max_wal_size:
     db_cfg_param_val_dict['max_wal_size'] = args.max_wal_size
 
@@ -82,10 +85,10 @@ if args.checkpoint_timeout:
 if args.max_connections:
     db_cfg_param_val_dict['max_connections'] = args.max_connections
 
-#if args.run_mode:
+# if args.run_mode:
    # if args.run_mode == 'optimized':
-        #pgu.log_statement = 'none' #TODO: fix this
- 
+    # pgu.log_statement = 'none' #TODO: fix this
+
 if args.log_statement:
     log_statement = args.log_statement
 
@@ -93,13 +96,15 @@ run_dir = "./"
 if args.run_dir:
     run_dir = args.run_dir[0]
 if args.startdb:
-    cntrl.initdb(dbdesc=dbsession_dbdesc, host_type=host_type, log_statement=log_statement, db_cfg_param_val_dict = db_cfg_param_val_dict, wdir=run_dir)
+    cntrl.initdb(dbdesc=dbsession_dbdesc, host_type=host_type, log_statement=log_statement,
+                 db_cfg_param_val_dict=db_cfg_param_val_dict, wdir=run_dir)
 
 if args.restartdb:
-    cntrl.startdb(dbsession_dbdesc, host_type=host_type, log_statement=log_statement, db_cfg_param_val_dict= db_cfg_param_val_dict, wdir=run_dir)
+    cntrl.startdb(dbsession_dbdesc, host_type=host_type, log_statement=log_statement,
+                  db_cfg_param_val_dict=db_cfg_param_val_dict, wdir=run_dir)
 
 
-if args.cleandb: ## stop and remove files
+if args.cleandb:  # stop and remove files
     cntrl.cleanup(dbdesc=dbsession_dbdesc, wdir=run_dir)
     
 

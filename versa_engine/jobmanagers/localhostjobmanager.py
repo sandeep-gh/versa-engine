@@ -177,6 +177,7 @@ def launchdbjob(dbdesc=None, dbport=None, save_on_exit_val="no", postjob_cleanup
             job_fh.close()
             launch_job(job_fn)  # launch job asynchronously/background
 
+            conn = None
             while 1:
                 time.sleep(2)
                 try:

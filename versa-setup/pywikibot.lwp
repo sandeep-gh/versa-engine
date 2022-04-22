@@ -1,0 +1,5 @@
+#LWP-Cookies-2.0
+Set-Cookie3: UseCDNCache=false; path="/"; domain="csvpackdl.localhost"; path_spec; expires="2021-09-25 10:50:17Z"; HttpOnly=None; version=0
+Set-Cookie3: UseDC=master; path="/"; domain="csvpackdl.localhost"; path_spec; expires="2021-09-25 10:50:17Z"; HttpOnly=None; version=0
+Set-Cookie3: csvpackdl_BPsession=mvdm8aqc5bd2b3d6vqh78mkn9dkbd3m3; path="/"; domain="csvpackdl.localhost"; path_spec; discard; HttpOnly=None; version=0
+Set-Cookie3: csvpackdl_session=8k46j7k7jdof3ruckddijsrughrvtctt; path="/"; domain="csvpackdl.localhost"; path_spec; discard; HttpOnly=None; version=0

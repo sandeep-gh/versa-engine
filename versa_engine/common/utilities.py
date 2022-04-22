@@ -118,13 +118,16 @@ def get_listener(port):
     return listener
 
     print("get listener = ", gethostname())
-# def signal_listen(port):
-#     address = (gethostname(), port)     # family is deduced to be 'AF_INET'
-#     listener = Listener(address, authkey='secret password')
-#     conn = listener.accept()
-#     #print 'connection accepted from', listener.last_accepted
-#     msg=conn.recv()
-#     return msg
+
+
+def signal_listen(listener, num_senders=1):
+    assert type(listener) is not int  # previous incarnation of used port
+    all_msgs = []
+    for i in range(0, num_senders):
+        conn = listener.accept()
+        msg = conn.recv()
+        all_msgs.append(msg)
+    return all_msgs
 
 
 def signal_send(host, port, msg='database loaded'):

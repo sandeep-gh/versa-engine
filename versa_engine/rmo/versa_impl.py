@@ -1,17 +1,17 @@
 from string import Template
 import subprocess
 
-from controller.appconfig import AppConfig
-import controller.pgsa_utils as pgu
-import common.metadata_utils as mu
-import common.xmlutils as xu
-import edi.dicex_edi_impl as dei
-import edi.edi_config_utils as ecu
-import edi.load_file_impl as lfi
-import rmo.utils as vu
+from ..controller.appconfig import AppConfig
+from ..controller import pgsa_utils as pgu
+from ..common import metadata_utils as mu
+from ..common import xmlutils as xu
+from ..edi import dicex_edi_impl as dei
+from ..edi import edi_config_utils as ecu
+from ..edi import load_file_impl as lfi
+from . import utils as vu
 #import versa_api as vapi
 # provides port, session, sqlalchemy resources, etc.
-from rmo.versa_header import *
+from .versa_header import *
 # TODO: fix the work dir stuff'
 
 
@@ -61,9 +61,9 @@ def append_import_header(tbl_name, wd):
     print("from ", tbl_name + '_model import *', file=import_header)
     import_header.close()
     cmd_str = f'sort -n {work_dir}/.x.py | uniq > {work_dir}/import_header.py'
- 
-    print ("import header cmd = ", cmd_str)
-    print ("work_dir = ", work_dir)
+
+    print("import header cmd = ", cmd_str)
+    print("work_dir = ", work_dir)
     subprocess.call(cmd_str, shell=True)
 
 
@@ -120,8 +120,8 @@ def build_orm_from_metadata(metadata_root, base_tbl_name=None, create_table=Fals
     b = globals()
     a.update(b)
     create_orm_cmd_str = create_orm_cmd.substitute(a)
-    print ("create orm cmd = ", create_orm_cmd_str)
-    print ("work_dir = ", work_dir)
+    print("create orm cmd = ", create_orm_cmd_str)
+    print("work_dir = ", work_dir)
     # print create_orm_cmd_str
     subprocess.call(create_orm_cmd_str, shell=True)
     append_import_header(tbl_name, work_dir)
@@ -239,16 +239,19 @@ def build_orms(cfg_xml, work_dir="./", force_create_model=False, depth=0):
         croot = cfg_xml
     else:
         croot = ecu.read_config_file(cfg_xml)
-    all_models = build_orm_files(croot, force_create_model=force_create_model, work_dir=work_dir)
+    all_models = build_orm_files(
+        croot, force_create_model=force_create_model, work_dir=work_dir)
     if xu.has_key(croot, 'edconfig', path_prefix='./'):
         edcfg_elems = xu.get_elems(croot, 'edconfig', path_prefix='./')
         for edcfg_elem in edcfg_elems:
             # recursively call edcfg on nested edcfgs
-            more_models  = build_orms(
+            more_models = build_orms(
                 edcfg_elem, work_dir, force_create_model=force_create_model, depth=depth+1)
-        for x in more_models: #awful as awful does
+        for x in more_models:  # awful as awful does
             all_models.append(x)
     return all_models
+
+
 def build_orm_files(cfg_xml, datasets=None, force_create_model=False, work_dir="./"):
     if xu.check_if_xml_tree(cfg_xml):
         croot = cfg_xml
@@ -262,7 +265,7 @@ def build_orm_files(cfg_xml, datasets=None, force_create_model=False, work_dir="
     all_files = ecu.get_files(croot)
     if all_files is None:
         return None
-    
+
     all_models = []
     for fe in all_files:
         metadata = fe['metadata']
@@ -314,8 +317,9 @@ def build_orm_files(cfg_xml, datasets=None, force_create_model=False, work_dir="
                 dei.load_shape_data_from_file(metadata_root, file_locations)
             build_orm_from_metadata(
                 metadata_root, force_create_model=force_create_model, work_dir=work_dir)
-    print ("all_models = ", all_models)
-    return all_models    
+    print("all_models = ", all_models)
+    return all_models
+
 
 def build_orm_oracle_tables(cfg_xml, make_local_copy=False, force_create_model=False, work_dir="./"):
     '''
@@ -351,7 +355,7 @@ def build_orm_oracle_tables(cfg_xml, make_local_copy=False, force_create_model=F
             else:
                 build_orm_from_metadata(
                     metadata_root, base_tbl_name=base_tbl_name, work_dir=work_dir)
-        return all_models 
+        return all_models
 
 # def build_orm_gp_pipeline(cfg_xml):
 #     import sidap_utils as su
@@ -368,6 +372,7 @@ def build_orm_oracle_tables(cfg_xml, make_local_copy=False, force_create_model=F
 #         pass
 
 #     return
+
 
 def build_orm_pg_tables(cfg_xml, force_create_model=False, make_local_copy=False, work_dir="./"):
     # creates foreign data wrapper

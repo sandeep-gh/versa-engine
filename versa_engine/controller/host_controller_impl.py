@@ -45,7 +45,6 @@ def pingdb(dbdesc=None, iambash=False):
     except:
         dbstatus = 0  # need a noop here or better programming practice
     # how the result needs to be outputted
-    print("pingdb res = ", dbstatus)
     if iambash:
         print(dbstatus)
     else:
@@ -78,7 +77,7 @@ def startdb(db_data_home, port=None, db_cfg_param_val_dict=None, log_statement='
     a.update(default_db_cfg_param_val_dict)
 
     start_cmd_str = start_cmd_template.substitute(a)
-    print (start_cmd_str)
+    print(start_cmd_str)
     subprocess.call(start_cmd_str, shell=True)
     pgu.create_extension_postgis(port)
 
@@ -87,7 +86,7 @@ def stopdb(db_data_home):
     setenv_path = AppConfig.get_setevn_path()
     stopdb_cmd_str = f'. {setenv_path}; pg_ctl -D {db_data_home}/data stop'
     subprocess.call(stopdb_cmd_str, shell=True)
-    return 1 #TODO: assuming this to be always success; TBF
+    return 1  # TODO: assuming this to be always success; TBF
 
 
 def savedb(user, db_data_home, image_identifier, target_node='127.0.0.1', target_dir='/media/kabira/home/DBbackups/'):

@@ -1,3 +1,37 @@
+* getting versa engine ready
+1. environments
+#+BEGIN_SRC   
+. /home/shared/appenv.sh
+. /home/shared/env.sh
+. ~/.versa/env.sh
+#+END_SRC
+2. start port server
+
+* Start/ping/stop/restart/teardown db engine
+** commandline
+*** frontend
+**** Launch/Start
+ frontend_controller_cmd_main.py.sh --dbsession eggfry --lauchjob
+**** Stop/ping/restart/teardown
+TBD (do from localhost)
+
+** host
+*** Launch/Start
+Not possible --> the code is too tied with frontend
+*** pingdb 
+host_controller_cmd_main.py.sh --dbsession eggfry --pingdb  --iambash
+
+*** stopdb
+
+** from code/frontend
+
+
+** from code/host
+
+
+
+
+
 
 * env
 

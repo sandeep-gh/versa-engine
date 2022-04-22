@@ -1,0 +1,77 @@
+
+* Setup
+getting versa engine ready
+1. environments
+#+BEGIN_SRC   
+. /home/shared/appenv.sh
+. /home/shared/env.sh
+. ~/.versa/env.sh
+#+END_SRC
+2. start port server
+
+
+
+* Controller
+
+|      | frontend | host |
+| cli  |          |      |
+| code |          |      |
+
+** Start/ping/stop/restart/teardown db engine
+*** Start
+|      | frontend                                                         | host         |
+| cli  | frontend_controller_cmd_main.py.sh --dbsession eggfry --lauchjob | Not possible |
+| code | ??                                                               | ??           |
+
+*** ping
+|      | frontend | host                                                                  |
+| cli  | TBD      | host_controller_cmd_main.py.sh --dbsession eggfry --pingdb  --iambash |
+| code | TBD      | TBD                                                                   |
+
+** host controller args
+*** pingdb
+print if session is active
+
+*** stopdb
+stop the session
+
+*** restoredb/resumedb
+from a saved session -- restart the session
+
+*** savedb
+
+*** cleandb
+stop and remove files
+
+*** startdb
+
+*** restartdb
+
+*** other parameters
+
+shared_buffer_size
+max_wal_size
+maintenance_work_mem
+work_mem
+effective_cache_size
+checkpoint_timeout
+log_statement: none, ddl, mod, all
+*** TODO  run_mode: not working
+
+
+
+
+
+
+
+
+
+
+* External data
+|      | frontend | host |
+| cli  |          |      |
+| code |          |      |
+
+
+** 
+versa.py.sh --data_config edcfg 

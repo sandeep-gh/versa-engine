@@ -1,0 +1,242 @@
+* code gits
+strconv,
+file_read_backwards
+
+* starting versa
+1. start the portserver
+   2. dbsession_name = session_id
+
+
+** critical junctures
+make sure to set '~/.versa/env.sh' ```##setenv_path = '~/.versa/env.sh'  # TODO: this should come from config```
+3. assert 'dicex_basedir' in os.environ 
+
+*** how does system_config_root is set in appconfig/utilites
+* Links
+https://github.com/riceissa/nginx-mediawiki
+
+
+
+* Apts
+sudo aptitude install flex bison gdal 
+
+libreadline-dev
+sudo apt install libgeos-dev libtiff-dev libgdal-dev python3-gdal gdal-bin
+sudo apt install nginx
+sudo aptitude install libprotoc-dev  libprotobuf-c-dev  protobuf-c-compiler
+sudo apt install libboost-all-dev
+sudo apt-get install build-essential libreadline-dev zlib1g-dev flex bison libxml2-dev libxslt-dev libssl-dev libxml2-utils xsltproc
+
+
+* python
+pip3 install sqlalchemy xmldict tabulate pandas sqlalchemy-postgres-copy PyShp scipy matplotlib shapely requests pyproj seaborn multiprocess geoalchemy2 RPyC  strconv  urllib3 demjson3 jsbeautifier  dill dpath --user 
+export PYTHONPATH=/home/kabira/.local/lib/python3.7/site-packages:$PYTHONPATH
+
+** geos
+wget http://download.osgeo.org/geos/geos-3.9.1.tar.bz2
+
+** TODO at some point switch to higher level geos
+current build breaks for arm (see)
+
+
+** more pip3 install
+pip3 install  mwparserfromhell pywikibot wheel sqlalchemy aenum line_profiler   enum_switch justpy requests epc  autopep8 flake8 jedi virtualenv grip intervals setuptools --user
+
+
+
+** issue with pyproj
+Collecting pyproj
+  Downloading https://files.pythonhosted.org/packages/7c/1d/20ea3b603db61ccc60f45064a9e00ba2e6263f1de560e33306f6f3d42fcb/pyproj-3.1.0.tar.gz (182kB)
+    100% |████████████████████████████████| 184kB 1.1MB/s 
+  Installing build dependencies ... done
+    Complete output from command python setup.py egg_info:
+    ERROR: Minimum supported PROJ version is 7.2.0, installed version is 5.2.0. For more information see: https://pyproj4.github.io/pyproj/stable/installation.html
+
+
+wget    https://download.osgeo.org/proj/proj-8.1.0.tar.gz
+tar xvzf proj-8.1.0.tar.gz
+cd proj-8.1.0
+sudo aptitude install sqlite3
+
+
+
+* pg
+
+sudo apt-get install build-essential libreadline-dev zlib1g-dev flex bison libxml2-dev libxslt-dev libssl-dev libxml2-utils xsltproc
+
+./configure --prefix=/usr/local
+make
+make install
+
+** postgis
+
+*** geos-3.9.1
+
+cmake ../geos-3.9.1/ -DCMAKE_INSTALL_PREFIX=/home/kabira/Builds/geos/
+
+/usr/bin/ld: CMakeFiles/geos.dir/src/noding/BasicSegmentString.cpp.o:(.rodata+0x0): multiple definition of `typeinfo name for geos::noding::BasicSegmentString'; CMakeFiles/geos.dir/src/inlines.cpp.o:(.rodata+0x50): first defined here
+/usr/bin/ld: CMakeFiles/geos.dir/src/noding/BasicSegmentString.cpp.o:(.data.rel.ro+0x0): multiple definition of `typeinfo for geos::noding::BasicSegmentString'; CMakeFiles/geos.dir/src/inlines.cpp.o:(.data.rel.ro+0x18): first defined here
+/usr/bin/ld: CMakeFiles/geos.dir/src/noding/BasicSegmentString.cpp.o:(.data.rel.ro+0xc): multiple definition of `vtable for geos::noding::BasicSegmentString'; CMakeFiles/geos.dir/src/inlines.cpp.o:(.data.rel.ro+0x94): first defined here
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/geos.dir/build.make:5349: lib/libgeos.so.3.9.1] Error 1
+make[1]: *** [CMakeFiles/Makefile2:879: CMakeFiles/geos.dir/all] Error 2
+
+** with system geos
+wget https://download.osgeo.org/postgis/source/postgis-3.0.2.tar.gz
+tar xvzf postgis-3.0.2.tar.gz
+cd postgis-3.0.2 
+./configure 
+make
+make install
+
+* mediawiki
+
+** for database
+
+mkdir datapackwikidb
+cd datapackwikidb
+pg_ctl -D /media/kabira/home/var/kabira/mediawikidb initdb
+pg_ctl -D /media/kabira/home/var/kabira/datapackwiki -l logfile start
+
+psql -u postgres
+CREATE USER wikiuser WITH NOCREATEDB NOCREATEROLE NOSUPERUSER ENCRYPTED PASSWORD 'password';
+CREATE DATABASE wikidb WITH OWNER wikiuser;
+
+** for mediawiki server
+wget https://releases.wikimedia.org/mediawiki/1.35/mediawiki-1.35.2.tar.gz
+
+  cd /var/www
+  sudo tar xvf ~/opensourceforgery/mediawiki-1.35.2.tar.gz
+  sudo mv mediawiki-1.35.2 csvpackwiki
+  sudo chown www-data:www-data /var/www/csvpackwiki// -R
+  sudo apt -y install lsb-release apt-transport-https ca-certificates
+  sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+  echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+  sudo apt update
+  sudo apt upgrade
+  
+ sudo apt install php7.4 php7.4-fpm php7.4-mysql php-common php7.4-cli php7.4-common php7.4-json php7.4-op
+ 
+  sudo apt install composer
+  sudo composer install --no-dev
+    sudo apt install php7.4-mbstring php7.4-xml php7.4-fpm php7.4-json php7.4-mysql php7.4-curl php7.4-intl 
+      sudo chown www-data:www-data /var/www/csvpackwiki// -R
+
+      sudo apt install php7.4-pgsql
+      sudo systemctl start php7.4-fpm
+
+
+ 
+*** localsSettings.ph
+adminpassword: babyelephanshaadi
+adminname :csvpackdladmin
+websitename: csvpackdl
+schema: dl
+
+
+*** the bot
+The bot password for bot name "webappworker" of user "Csvpackdladmin" was created.
+
+The new password to log in with Csvpackdladmin@webappworker is g2cdj2tj4k4b5oa565158v5l5ga6oki1. Please record this for future reference.
+
+export PATH=/home/kabira/Opensourceforgery/cli/bin:$PATH
+gh repo clone wikimedia/pywikibot
+cd scripts
+git clone https://gerrit.wikimedia.org/r/pywikibot/i18n.git
+
+add to /etc/hosts
+subdomain.localhost <---> 127.0.0.1
+
+*** generate user-config
+git clone https://github.com/wikimedia/pywikibot.git --depth 1
+python3 -m pip install -U setuptools
+python3 -m pip install -e pywikibot/
+cd pywikibot/
+python3 pwb.py generate_family_file.py https://url.to.your/wiki/api.php? mywikiname
+python3 pwb.py generate_user_files.py
+# follow the prompts
+
+
+** change skin
+
+ sudo -u www-data COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
+sudo -u www-data composer update mediawiki/chameleon-skin --no-dev -o
+
+wfLoadExtension( 'Bootstrap' );
+wfLoadSkin( 'chameleon' );
+
+$wgDefaultSkin='chameleon';
+$egChameleonLayoutFile= __DIR__ . '/skins/chameleon/layouts/clean.xml';
+
+* how to configure postgres 
+
+sudo adduser postgres
+sudo mkdir /usr/local/var/postgres
+
+sudo chmod 775 /usr/local/var/postgres
+
+sudo chown postgres /usr/local/var/postgres
+
+sudo -i -u postgres
+initdb /usr/local/var/postgres
+initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data'
+
+
+useradd -G versa  -L daemon -p Redfrogpoison22  postgres 
+su postgres
+psql
+psql -d 
+CREATE USER csvpackdladmin WITH NOCREATEDB NOCREATEROLE NOSUPERUSER ENCRYPTED PASSWORD 'sikshitberozgar';
+CREATE DATABASE csvpackdl WITH OWNER csvpackdladmin;  
+
+** create a user
+createuser -s -U postgres
+enter the role of user
+
+** debian user sammy; pg user sammy ; database sammy 
+sudo -u postgres createuser --interactive
+createdb sammy
+sudo adduser sammy
+sudo -i -u sammy
+sudo -u sammy psql
+psql -d postgres
+
+\conninfo
+
+You are connected to database "sammy" as user "sammy" via socket in "/var/run/postgresql" at port "5432".
+
+
+*** TODO  fix hba.conf  
+*** TODO  start postgres at begin
+*** TODO why kabira can access role csvadmin
+
+* nginx
+add conf.d/csvpackwiki.conf
+sudo nginx -t
+sudo systemctl reload nginx
+
+
+
+* python3.10
+install libssl-dev
+
+* pyboost_ipc
+
+~/Opensourceforgery/cli/bin/gh repo clone ESSS/pyboost_ipc
+
+python=/usr/bin/python3 cmake .. -DBOOST_ROOT=/home/kabira/Opensourceforgery/boost_build
+-DPYTHON_LIBRARY=/usr/lib/python3.7/config-3.7m-arm-linux-gnueabihf/libpython3.7m.a  -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m/ -DCOMPILE_TESTS=True -DCMAKE_INSTALL_PREFIX=/home/kabira/Opensourceforgery/pyboost_ipc_bin/
+
+https://stackoverflow.com/questions/23064407/expose-c-buffer-as-python-3-bytes
+sudo cmake --build . --target install --config Release --verbose 
+
+** boost.python
+wget https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.bz2
+./bootstrap.sh --with-python=$(which python3)
+./b2 install --prefix=/home/kabira/Opensourceforgery/boost_build/  --with-python
+
+
+* tailwind color codes
+cd Development/tailwind-tags/tailwind_tags/
+wget https://raw.githubusercontent.com/mvdnbrk/tailwind-colors.com/main/resources/json/palette-v2x.json
+
