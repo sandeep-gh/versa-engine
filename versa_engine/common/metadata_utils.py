@@ -37,8 +37,9 @@ def get_columns_and_type(metadata_root):
 
 def is_fkey(metadata_root, column_name):
     xroot=xu.get_elems_by_parent_child_key_value(metadata_root, 'columns', 'column', 'name', column_name, True)
-    if 'fkey' in xu.get_attr_list(xroot):
-        return True
+    if xroot:
+        if 'fkey' in xu.get_attr_list(xroot):
+            return True
     return False
     
 

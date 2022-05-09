@@ -1,3 +1,11 @@
+* Manage data type conversion
+1. from csv-typeinfer/strconv to python/sqlalchemy --> to postgres
+2. oracle datatypes.
+3. variable size varchar
+* metadata
+** cannot handle quotes in metadata name -- IndiaAC generates quotes.
+** empty string for names
+** cannot handle no primary key
 
 * Setup
 getting versa engine ready
@@ -75,3 +83,4 @@ log_statement: none, ddl, mod, all
 
 ** 
 versa.py.sh --data_config edcfg 
+python3 ~/Development/versa-engine/cli/host_controller_cmd_main.py.sh --dbsession  mydbsession --stopdb

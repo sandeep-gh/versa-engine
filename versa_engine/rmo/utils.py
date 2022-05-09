@@ -31,8 +31,7 @@ def import_model(model_name, model_dir=None):
 
 def check_module_exists(module_name, work_dir="./"):
     try:
-        sys.path.append(work_dir)
-        imp.find_module(module_name)
+        imp.find_module(module_name, [work_dir])
         model_obj = __import__(module_name)
         return True
     except ImportError:

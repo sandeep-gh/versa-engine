@@ -12,4 +12,8 @@ from .controller import pgsa_utils as pgu
 from .common import metadata_utils
 from .edi import dicex_edi_impl
 from . import rmo
+
 from .rmo.versa_impl import init as connect_dbsession
+from .common.xmlutils import read_string as read_xmlstring
+from .rmo.versa_impl import build_orms
+from .rmo.utils import check_model_exists, import_model

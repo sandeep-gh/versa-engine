@@ -53,7 +53,7 @@ def build_clone_primary_key(primary_keys, foreign_keys):
     return key_str[:-1]
 
 
-def create_table_from_metadata(metadata_root, wd=None, port=None, pgdb='postgres', schema='public'):
+def build_create_tbl_cmd_from_metadata(metadata_root, wd=None, port=None, pgdb='postgres', schema='public'):
     if wd is not None:
         work_dir = wd
     assert work_dir is not None
@@ -81,11 +81,17 @@ def create_table_from_metadata(metadata_root, wd=None, port=None, pgdb='postgres
     clone_primary_key = build_clone_primary_key(primary_keys, foreign_keys)
     setenv_path = AppConfig.get_setevn_path()
     create_pg_schema_template = Template(
-        ". ${setenv_path}; awk -f ${module_dir}/create_pg_schema_v2.awk ${work_dir}/${model_name}.schema |sed \'s/__TBL__/\'${tbl_name}\'/g\' | sed \'s/__SCHEMA__/\'${schema}\'/g\' | psql -p $port ${pgdb}  >> ${work_dir}/psql_out")
+        ". ${setenv_path}; awk -f ${module_dir}/create_pg_schema_v2.awk ${work_dir}/${model_name}.schema |sed \'s/__TBL__/\'${tbl_name}\'/g\' | sed \'s/__SCHEMA__/\'${schema}\'/g\'")
     a = locals()
     b = globals()
     a.update(b)
     create_pg_schema_cmd = create_pg_schema_template.substitute(a)
+    return tbl_name, create_pg_schema_cmd
+
+
+def create_table_from_metadata(metadata_root, wd=None, port=None, pgdb='postgres', schema='public'):
+    tbl_name, create_pg_schema_cmd = build_create_tbl_cmd_from_metadata(metadata_root, wd=wd, port=port, pgdb=pgdb, schema=schema)
+    #| psql -p $port ${pgdb}  >> ${work_dir}/psql_out"
     subprocess.call(create_pg_schema_cmd, shell=True)
     ### adding indexes####
     build_indexes(tbl_name, metadata_root, port)
