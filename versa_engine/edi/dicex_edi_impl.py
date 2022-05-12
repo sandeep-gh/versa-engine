@@ -303,12 +303,12 @@ def create_tables(cfg_xml, wd=None, dbport=None, pgdb='postgres', schema='public
         if model_name is not None:
             mu.set_model_name(metadata_root, model_name)
         lfi.create_table_from_metadata(
-            metadata_root, wd=work_dir, port=dbport, pgdb=pgdb, schema=schema)
+            metadata_root, work_dir=work_dir, port=dbport, pgdb=pgdb, schema=schema)
     conn.commit()
 
 
 def create_table_from_metadata(metadata_root, wd=None, pgdb='postgres'):
-    lfi.create_table_from_metadata(metadata_root, wd=wd, port=port, pgdb=pgdb)
+    lfi.create_table_from_metadata(metadata_root, work_dir=wd, port=port, pgdb=pgdb)
     conn.commit()
 
 

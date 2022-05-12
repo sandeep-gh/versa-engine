@@ -89,9 +89,11 @@ def build_create_tbl_cmd_from_metadata(metadata_root, wd=None, port=None, pgdb='
     return tbl_name, create_pg_schema_cmd
 
 
-def create_table_from_metadata(metadata_root, wd=None, port=None, pgdb='postgres', schema='public'):
-    tbl_name, create_pg_schema_cmd = build_create_tbl_cmd_from_metadata(metadata_root, wd=wd, port=port, pgdb=pgdb, schema=schema)
-    #| psql -p $port ${pgdb}  >> ${work_dir}/psql_out"
+def create_table_from_metadata(metadata_root, work_dir=None, port=None, pgdb='postgres', schema='public'):
+    print ("in create table from metadata")
+    tbl_name, create_pg_schema_cmd = build_create_tbl_cmd_from_metadata(metadata_root, wd=work_dir, port=port, pgdb=pgdb, schema=schema)
+    create_pg_schema_cmd = create_pg_schema_cmd + f" | psql -p {port} {pgdb}  >> {work_dir}/psql_out"
+    print(create_pg_schema_cmd)
     subprocess.call(create_pg_schema_cmd, shell=True)
     ### adding indexes####
     build_indexes(tbl_name, metadata_root, port)

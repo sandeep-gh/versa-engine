@@ -1,3 +1,15 @@
+* db connection 
+dei.init_connection
+#+BEGIN_SRC python
+    import psycopg2 as pgsai
+
+    conn = pgsai.connect(conn_string)
+    engine = sqlalchemy.create_engine(conn_str)
+    Session = sessionmaker()
+      Session.configure(bind=engine)
+      dbsession = Session()
+#+END_SRC
+
 * TODOs
 ** build orm without loading data;
 external tables
