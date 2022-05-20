@@ -264,4 +264,4 @@ def download_url(url, save_dir=".", char_limit=13):
         with open(filename, 'wb') as f:
             #shutil.copyfileobj(r.content, f)
             f.write(r.content)
-    return filename
+    return filename, r.content

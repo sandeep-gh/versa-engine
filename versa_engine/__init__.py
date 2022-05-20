@@ -17,3 +17,7 @@ from .rmo.versa_impl import init as connect_dbsession
 from .common.xmlutils import read_string as read_xmlstring
 from .rmo.versa_impl import build_orms
 from .rmo.utils import check_model_exists, import_model
+
+from .dataapis import relational as reapi
+from .dataapis import schema as schapi
+from .dataapis import export as exapi

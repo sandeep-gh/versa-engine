@@ -1,3 +1,4 @@
+
 * Manage data type conversion
 1. from csv-typeinfer/strconv to python/sqlalchemy --> to postgres
 2. oracle datatypes.
@@ -7,6 +8,21 @@
 ** empty string for names
 ** cannot handle no primary key
 
+* tests cases that demo usage
+test launch and ping db
+/home/kabira/Development/versa-engine/versa_engine/controller/unit_tests/launchdjob.py
+/home/kabira/Development/versa-webapp-jpyf/versa_webapp/analytics_dashboard/actions.py
+
+** connect to db
+versa connection: sqlalchemy, psycopg2 connections
+[dbadapter, dbsession] = ve.connect_dbsession(session_name, session_run_dir)
+
+** build orm
+ve.build_orms(edcfg_root, session_run_dir)
+
+** load orm and orm usage
+ rmo = vu.import_model(_, wp.model.run_dir)
+ see [[./all_import_model_stmts.org]]
 * Setup
 getting versa engine ready
 1. environments

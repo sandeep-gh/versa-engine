@@ -110,7 +110,7 @@ def build_orm_from_metadata(metadata_root, base_tbl_name=None, create_table=Fals
         create_pg_tbl_cmd_str = create_pg_tbl_cmd.substitute(a)
         subprocess.call(create_pg_tbl_cmd_str, shell=True)
     # add import header.py stmt
-    subprocess.call("echo \"from rmo.header import * \" > " +
+    subprocess.call("echo \"from versa_engine.rmo.header import * \" > " +
                     work_dir + "/" + model_name+"_model.py", shell=True)
 
     #create orm###

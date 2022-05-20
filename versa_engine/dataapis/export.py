@@ -83,7 +83,7 @@ def scan_as_dictionary(session=None, rmo=None, key_attr=None):
     return to_dict(session.query(stmt).all(), key_attr)
 
 
-def export_rmo(session=None, rmo=None, model_name=None, export_dir="./", metadata_fn=None, csv_fn=None, delimiter=',', dry_run=False, skip_metadata=False):
+def export_rmo(session=None, rmo=None, model_name=None,  metadata_dir=None, metadata_fn=None, content_dir=None, csv_fn=None, delimiter=',', dry_run=False, skip_metadata=False):
     """
        export content of rmo to a file
 
@@ -112,10 +112,10 @@ def export_rmo(session=None, rmo=None, model_name=None, export_dir="./", metadat
     assert delimiter_label is not None
 
     if metadata_fn is None:
-        metadata_fn = export_dir + "/" + model_name + ".md"
+        metadata_fn = metadata_dir + "/" + model_name + ".md"
 
     if csv_fn is None:
-        csv_fn = export_dir + "/" + model_name + ".csv"
+        csv_fn = content_dir + "/" + model_name + ".csv"
 
     if not dry_run:
         copy_to_file(session, rmo, csv_fn, delimiter=delimiter)
@@ -192,7 +192,7 @@ def build_file_element(csv_fn, metadata_fn, model_name, delimiter_label, crop_he
     return file_elem
 
 
-def build_edcfg_elem(file_elems=None, out_fn=None):
+def build_edcfg_elem(file_elems, out_fn, out_dir="./"):
     """
     create xml config element from a collection of xml file elements
 
@@ -209,8 +209,11 @@ def build_edcfg_elem(file_elems=None, out_fn=None):
     files_elem = xu.get_elems(all_file_elems, 'files', uniq=True)
     for file_elem in file_elems:
         files_elem.append(file_elem)
-    # with open(out_fn, 'w') as fh:
-     #   fh.write(xu.tostring(all_file_elems))
+    if os.path.exists(f"{out_dir}/{out_fn}"):
+        raise ValueError(f"edcfg file {out_dir}/{out_fn} already exists...aborting operation")
+
+    with open(f"{out_dir}/{out_fn}", 'w') as fh:
+        fh.write(xu.tostring(all_file_elems))
 
     xi_str = Template(
         """<xi:include href="$out_fn" parse="xml"/>""").substitute(out_fn=out_fn)
