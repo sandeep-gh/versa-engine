@@ -19,7 +19,6 @@ sniffer = csv.Sniffer()
 
 supported_encodings = ["utf-8", "ascii", "latin-1", "utf_8"]
 
-
 class ParseException(Exception):
     pass
 
@@ -76,11 +75,13 @@ def get_datastream_size(fn_or_bytes):
 
 
 def inferschema_line(l, expected_cols_type=None, use_dialect=None):
+    print("inferschema_line:use_dialect=", use_dialect)
     if use_dialect is None:
         use_dialect = sniffer.sniff(l)
 
     row = csv.reader([l], dialect=use_dialect).__next__()
 
+    print ("row = ", row)
     if expected_cols_type is None:
         cols_type = [x[1]
                      for x in strconv.convert_series(row, include_type=True)]
@@ -475,12 +476,15 @@ def get_csv_report(csvstore):
         if not header_candidates:
             header_candidates = [[f'col{_}' for _ in range(len(cols_type))]]
         delimiter_name = ""
-        if re.dialect.delimiter == ",":
-            delimiter_name = "comma"
-        if re.dialect.delimiter == " ":
-            delimiter_name = "space"
-        if re.dialect.delimiter == "|":
-            delimiter_name = "pipe"
+        match re.dialect.delimiter:
+            case ",":
+               delimiter_name = "comma"
+            case " ":
+               delimiter_name = "space"
+            case "|":
+               delimiter_name = "pipe"
+            case _:
+               delimiter_name = re.dialect.delimiter
 
         for idx, ctype in enumerate(cols_type):
             if ctype == 'float':

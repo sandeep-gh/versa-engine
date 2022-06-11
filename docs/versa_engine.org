@@ -1,3 +1,5 @@
+* on {content_dir}/testmodel.csv complete failure
+
 
 * Manage data type conversion
 1. from csv-typeinfer/strconv to python/sqlalchemy --> to postgres

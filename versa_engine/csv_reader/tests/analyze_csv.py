@@ -5,8 +5,8 @@ import traceback
 logging.basicConfig(level=logging.INFO)
 #import importlib
 # importlib.reload(cis)
-source_dirbase = "/home/kabira/Data/csvs_for_versa_testing/fails"
-for _fn in glob.glob(f"{source_dirbase}/*.csv"):
+source_dirbase = "/home/kabira/Databank/versa-dl/content/"
+for _fn in glob.glob(f"{source_dirbase}/testmode*.csv"):
     print(_fn)
     try:
         r = cis.get_csv_report(f"{_fn}")
